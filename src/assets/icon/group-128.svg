@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22">
+    <g data-name="Group 128">
+        <g data-name="Ellipse 77" style="stroke:#fff;stroke-width:2px;fill:none">
+            <circle cx="11" cy="11" r="11" style="stroke:none"/>
+            <circle cx="11" cy="11" r="10" style="fill:none"/>
+        </g>
+        <path data-name="Icon ionic-ios-heart" d="M10.106 3.938h-.022a2.519 2.519 0 0 0-2.1 1.151 2.519 2.519 0 0 0-2.1-1.151h-.029a2.5 2.5 0 0 0-2.48 2.5 5.39 5.39 0 0 0 1.058 2.94 18.549 18.549 0 0 0 3.547 3.417 18.548 18.548 0 0 0 3.547-3.417 5.39 5.39 0 0 0 1.059-2.938 2.5 2.5 0 0 0-2.48-2.502z" transform="translate(3.019 3.384)" style="fill:#fff"/>
+    </g>
+</svg>

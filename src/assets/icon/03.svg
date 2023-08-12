@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="70.549" height="45.574" viewBox="0 0 70.549 45.574">
+    <defs>
+        <clipPath id="zv5g88wsba">
+            <path data-name="Rectangle 16" style="fill:none;stroke:#fff" d="M0 0h70.549v45.574H0z"/>
+        </clipPath>
+    </defs>
+    <g data-name="3">
+        <g data-name="Group 53" style="clip-path:url(#zv5g88wsba)">
+            <path data-name="Path 76" d="M3.461 24.048v9.33a4.415 4.415 0 0 0 4.415 4.415H61.8a4.415 4.415 0 0 0 4.415-4.415v-9.33s.263-9.34-13.048-9.34h-37.82s-11.886-.527-11.886 9.34z" transform="translate(.435 1.848)" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff"/>
+            <path data-name="Path 77" d="M34.285 1.007h-13.26S15.32.689 13.631 4.6 7.866 17.816 7.866 17.816" transform="translate(.989 .125)" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff"/>
+            <path data-name="Path 78" d="M31.335 1.007h13.26S50.3.689 51.989 4.6s5.765 13.217 5.765 13.217" transform="translate(3.939 .125)" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff"/>
+            <circle data-name="Ellipse 59" cx="3.393" cy="3.393" r="3.393" transform="translate(9.865 21.311)" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff"/>
+            <circle data-name="Ellipse 60" cx="3.393" cy="3.393" r="3.393" transform="translate(53.182 21.311)" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff"/>
+            <path data-name="Path 79" d="M46.84 28.285H18.777l2.251-5.6h23.56z" transform="translate(2.36 2.851)" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff"/>
+            <path data-name="Line 29" transform="translate(16.651 34.728)" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff" d="M0 0h36.531"/>
+            <path data-name="Path 80" d="M15.761 35.193v2.6a2.227 2.227 0 0 1-2.227 2.227H9.3a2.226 2.226 0 0 1-2.226-2.22v-2.6" transform="translate(.889 4.423)" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff"/>
+            <path data-name="Path 81" d="M55.931 35.193v2.6a2.227 2.227 0 0 1-2.231 2.232h-4.229a2.226 2.226 0 0 1-2.227-2.225v-2.6" transform="translate(5.939 4.423)" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff"/>
+            <path data-name="Path 82" d="M6.8 14.846H2.99A1.989 1.989 0 0 1 1 12.856v-.616a1.99 1.99 0 0 1 1.99-1.99H6.8a1.991 1.991 0 0 1 1.99 1.99v2.606z" transform="translate(.126 1.288)" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff"/>
+            <path data-name="Path 83" d="M56.739 14.846h3.812a1.989 1.989 0 0 0 1.99-1.99v-.616a1.99 1.99 0 0 0-1.99-1.99h-3.812a1.991 1.991 0 0 0-1.99 1.99v2.606z" transform="translate(6.882 1.288)" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff"/>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="69.221" height="43.95" viewBox="0 0 69.221 43.95">
+    <defs>
+        <clipPath id="m03araegia">
+            <path data-name="Rectangle 30" style="fill:none;stroke:#fff" d="M0 0h69.221v43.95H0z"/>
+        </clipPath>
+    </defs>
+    <g data-name="10">
+        <g data-name="Group 67" style="clip-path:url(#m03araegia)">
+            <circle data-name="Ellipse 61" cx="10.547" cy="10.547" r="10.547" transform="translate(5.369 17.487)" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff"/>
+            <circle data-name="Ellipse 62" cx="14.916" cy="14.916" r="14.916" transform="translate(1 13.118)" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff"/>
+            <circle data-name="Ellipse 63" cx="10.547" cy="10.547" r="10.547" transform="translate(42.758 17.487)" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff"/>
+            <circle data-name="Ellipse 64" cx="14.916" cy="14.916" r="14.916" transform="translate(38.389 13.118)" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff"/>
+            <path data-name="Path 117" d="M29.273 34.672s6.006-2.534 10.673 0" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff"/>
+            <path data-name="Line 46" transform="translate(30.244 23.884)" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff" d="M0 0h8.731"/>
+            <path data-name="Path 118" d="M8.439 14.78a372.866 372.866 0 0 1 2.992-4.647C15.944 3.3 18.374-.356 24.064 1.466s6.568 4.058 6.054 12.071c-.149 2.326-.428 5.361-.7 8.142" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff"/>
+            <path data-name="Path 119" d="M60.781 14.78a372.866 372.866 0 0 0-2.992-4.647C53.276 3.3 50.846-.356 45.156 1.466S38.588 5.524 39.1 13.537c.149 2.326.428 5.361.7 8.142" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff"/>
+            <path data-name="Path 120" d="M30.244 10.176s4.5-2.112 8.731 0" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff"/>
+            <path data-name="Line 47" transform="translate(47.125 21.679)" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff" d="M3.118 0 0 3.118"/>
+            <path data-name="Line 48" transform="translate(46.83 22.072)" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff" d="M8.2 0 0 8.2"/>
+            <path data-name="Line 49" transform="translate(10.206 21.679)" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff" d="M3.118 0 0 3.118"/>
+            <path data-name="Line 50" transform="translate(9.911 22.072)" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff" d="M8.2 0 0 8.2"/>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,23 @@
+<svg data-name="1" xmlns="http://www.w3.org/2000/svg" width="63.194" height="51.903" viewBox="0 0 63.194 51.903">
+    <defs>
+        <clipPath id="5h2a5t3wca">
+            <path data-name="Rectangle 14" style="fill:none;stroke:#fff" d="M0 0h63.194v51.903H0z"/>
+        </clipPath>
+    </defs>
+    <g data-name="Group 48" style="clip-path:url(#5h2a5t3wca)">
+        <path data-name="Path 66" d="M60.889 14.374A37.557 37.557 0 0 1 31.736 27.64 37.556 37.556 0 0 1 2.584 14.374c-1.8.491-2.091 6.251-.737 12.119 2.948 12.775 7.4 18.3 10.073 21.62 2.477 3.07 4.422 3.029 8.189 3.849s11.628.9 11.628.9 7.862-.082 11.628-.9 5.91-1.5 8.19-3.849c2.743-2.825 7.656-10.687 10.073-21.62 1.298-5.88 1.063-11.628-.739-12.119z" transform="translate(-.128 -1.832)" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff"/>
+        <path data-name="Path 67" d="M28.409 34.281a33.483 33.483 0 0 0 6.821.714c17.442 0 30.384-13.454 30.384-13.454" transform="translate(-3.621 -2.746)" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff"/>
+        <path data-name="Path 68" d="M1.294 20.6a51.824 51.824 0 0 0 15.058 10.683" transform="translate(-.165 -2.626)" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff"/>
+        <path data-name="Path 69" d="M17.742 24.615a21.974 21.974 0 0 1 32.258 0" transform="translate(-2.261 -2.239)" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff"/>
+        <path data-name="Path 70" d="M48.169 19.774a33.694 33.694 0 0 1 18.732-5.4" transform="translate(-6.14 -1.832)" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff"/>
+        <path data-name="Path 71" d="M21.525 19.774a33.694 33.694 0 0 0-18.732-5.4" transform="translate(-.356 -1.832)" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff"/>
+        <path data-name="Line 15" transform="translate(16.188 .872)" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff" d="M0 0v1.884"/>
+        <path data-name="Line 16" transform="translate(16.188 6.318)" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff" d="M0 0v1.884"/>
+        <path data-name="Line 17" transform="translate(17.969 4.537)" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff" d="M1.884 0H0"/>
+        <path data-name="Line 18" transform="translate(12.523 4.537)" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff" d="M1.884 0H0"/>
+        <path data-name="Line 19" transform="translate(42.029 5.479)" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff" d="M0 0v1.884"/>
+        <path data-name="Line 20" transform="translate(42.029 10.924)" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff" d="M0 0v1.884"/>
+        <path data-name="Line 21" transform="translate(43.81 9.143)" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff" d="M1.884 0H0"/>
+        <path data-name="Line 22" transform="translate(38.364 9.143)" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff" d="M1.884 0H0"/>
+    </g>
+</svg>

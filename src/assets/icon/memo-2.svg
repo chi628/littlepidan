@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="287.306" height="251.958" viewBox="0 0 287.306 251.958">
+    <defs>
+        <filter id="vdw1x3t7za" x="0" y="0" width="287.306" height="251.958" filterUnits="userSpaceOnUse">
+            <feOffset dx="4" dy="5"/>
+            <feGaussianBlur stdDeviation="15" result="blur"/>
+            <feFlood flood-color="#400014" flood-opacity=".345"/>
+            <feComposite operator="in" in2="blur"/>
+            <feComposite in="SourceGraphic"/>
+        </filter>
+        <filter id="2lraugjp8b" x="34" y="33" width="215.306" height="179.958" filterUnits="userSpaceOnUse">
+            <feOffset dx="2" dy="2"/>
+            <feGaussianBlur stdDeviation="3" result="blur-2"/>
+            <feFlood flood-opacity=".149"/>
+            <feComposite operator="in" in2="blur-2"/>
+            <feComposite in="SourceGraphic"/>
+        </filter>
+    </defs>
+    <g data-name="Group 133">
+        <g style="filter:url(#vdw1x3t7za)">
+            <path data-name="Path 201" d="M217.727 32.2v161.96h-91.581l-.744-.052-.493.052H20.421V32.2z" transform="translate(20.576 7.799)" style="fill:#d1e5d6"/>
+        </g>
+        <path data-name="Path 192" d="M365.472 566.917h1.237l-.744-.052z" transform="translate(-219.984 -364.958)" style="fill:#f1acac"/>
+        <path data-name="Path 193" d="M166.784 16.955H70.7l.458-6.623 86.511 5.99z" transform="translate(-14.478 23.046)" style="fill:#ea768d"/>
+        <path data-name="Path 194" d="m461.139 533.985 5.186-.537-1.164 16.794-95.6-6.623h91.581z" transform="translate(-222.833 -341.661)" style="fill:#ea768d"/>
+        <path data-name="Path 195" d="m671.985 105.9 6.922 66.706L687.2 52.922l-15.213-1.055z" transform="translate(-433.679 -5.912)" style="fill:#ea768d"/>
+        <g style="filter:url(#2lraugjp8b)">
+            <path data-name="Path 196" d="M217.727 32.2v161.96h-91.581l-.744-.052-.493.052H20.421V32.2z" transform="translate(20.576 7.799)" style="fill:#fff2dd"/>
+        </g>
+        <path data-name="Path 197" d="m681.467 321.653-4.3.447-5.186.537V230.3l6.922 66.706z" transform="translate(-433.679 -130.312)" style="fill:#ef8daa"/>
+        <path data-name="Path 198" d="m0 65.785 6.184 59.579V65.142z" transform="translate(34.816 -15.167)" style="fill:#ef8daa"/>
+        <path data-name="Path 199" d="m51.876 567.036 1.011 9.751 93.952-9.751z" transform="translate(-1.351 -365.078)" style="fill:#ef8daa"/>
+        <path data-name="Path 200" d="M431.776 0 343.9 9.119l-6.08.632h94.963z" transform="translate(-200.708 30.249)" style="fill:#ef8daa"/>
+    </g>
+</svg>

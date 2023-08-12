@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="58.5" height="46.627" viewBox="0 0 58.5 46.627">
+    <defs>
+        <clipPath id="n1t6hc4oba">
+            <path data-name="Rectangle 33" style="fill:none;stroke:#fff" d="M0 0h58.5v46.627H0z"/>
+        </clipPath>
+    </defs>
+    <g data-name="11">
+        <g data-name="Group 69" style="clip-path:url(#n1t6hc4oba)">
+            <path data-name="Rectangle 31" d="M3.22 0h50.059A3.22 3.22 0 0 1 56.5 3.22v30.913a3.221 3.221 0 0 1-3.221 3.221H3.22A3.22 3.22 0 0 1 0 34.134V3.22A3.22 3.22 0 0 1 3.22 0z" transform="translate(1 8.273)" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff"/>
+            <circle data-name="Ellipse 65" cx="16.049" cy="16.049" r="16.049" transform="translate(12.825 13.529)" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff"/>
+            <path data-name="Path 121" d="M38.318 29.578a9.444 9.444 0 1 1-9.444-9.444 9.444 9.444 0 0 1 9.444 9.444z" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff"/>
+            <path data-name="Line 51" transform="translate(1 17.33)" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff" d="M0 0h17.035"/>
+            <path data-name="Line 52" transform="translate(39.574 17.33)" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff" d="M0 0h17.035"/>
+            <path data-name="Line 53" transform="translate(8.321 22.539)" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff" d="M0 0v23.088"/>
+            <path data-name="Line 54" transform="translate(50.414 21.835)" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff" d="M0 0h2.816"/>
+            <path data-name="Line 55" transform="translate(51.821 36.054)" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff" d="M0 0v5.068"/>
+            <path data-name="Rectangle 32" transform="translate(9.518 3.393)" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff" d="M0 0h4.88v4.88H0z"/>
+            <path data-name="Path 122" d="M29.131 1H24.52a2.588 2.588 0 0 0-2.572 1.554c-.588 1.691-2 5.717-2 5.717" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff"/>
+            <path data-name="Path 123" d="M29.131 1h4.611a2.588 2.588 0 0 1 2.572 1.554c.588 1.691 2.005 5.717 2.005 5.717" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff"/>
+        </g>
+    </g>
+</svg>

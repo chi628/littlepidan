@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="70.565" height="75.396" viewBox="0 0 70.565 75.396">
+    <defs>
+        <clipPath id="m46hg38oya">
+            <path data-name="Rectangle 17" style="fill:none;stroke:#fff" d="M0 0h60.02v65.976H0z"/>
+        </clipPath>
+    </defs>
+    <g data-name="4">
+        <g data-name="Group 55" style="clip-path:url(#m46hg38oya)" transform="rotate(10.02 5.727 65.343)">
+            <path data-name="Path 84" d="M19.7 44.256v1.2a1.022 1.022 0 0 1-1.022 1.022h-1.944a1.022 1.022 0 0 1-1.023-1.022v-1.2" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff"/>
+            <path data-name="Path 85" d="M26.846 4.332a5.29 5.29 0 0 1 5.289 5.29V25.9" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff"/>
+            <path data-name="Path 86" d="M3.276 25.9V9.622a5.291 5.291 0 0 1 5.29-5.291" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff"/>
+            <path data-name="Line 30" transform="translate(9.47 1)" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff" d="M0 0v6.382"/>
+            <path data-name="Line 31" transform="translate(25.988 1)" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff" d="M0 0v6.382"/>
+            <path data-name="Path 87" d="M34.412 26.9A16.706 16.706 0 1 1 1 26.9l4.1-.351a12.6 12.6 0 1 0 25.208 0z" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff"/>
+            <path data-name="Path 88" d="M17.706 47.345a17.63 17.63 0 0 0 35.261 0V25.012" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff"/>
+            <path data-name="Path 89" d="M59.02 18.1a6.054 6.054 0 1 1-6.054-6.054A6.054 6.054 0 0 1 59.02 18.1z" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff"/>
+            <path data-name="Path 90" d="M55.363 18.1a2.4 2.4 0 1 1-2.4-2.4 2.4 2.4 0 0 1 2.4 2.4z" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;fill:none;stroke:#fff"/>
+        </g>
+    </g>
+</svg>
