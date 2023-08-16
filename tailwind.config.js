@@ -7,6 +7,7 @@ module.exports = {
         'hind-siliguri': ['Hind Siliguri'],
         'fira-sans': ['Fira Sans'],
         'noto-sans-TC': ['Noto Sans Traditional Chinese'],
+        futura: ['Futura'],
       },
     },
   },
