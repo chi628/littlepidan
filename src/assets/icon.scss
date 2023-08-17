@@ -1,0 +1,98 @@
+.icon--default {
+  content: '';
+  @apply w-[60px] h-[60px] inline-block bg-white;
+}
+.icon-gold {
+  &::before {
+    @extend .icon--default;
+    mask: url('@/assets/icons/01.svg') no-repeat center center / contain;
+  }
+}
+.icon-stamp {
+  &::before {
+    @extend .icon--default;
+    mask: url('@/assets/icons/02.svg') no-repeat center center / contain;
+  }
+}
+.icon-car {
+  &::before {
+    @extend .icon--default;
+    mask: url('@/assets/icons/03.svg') no-repeat center center / contain;
+  }
+}
+.icon-doctor {
+  &::before {
+    @extend .icon--default;
+    mask: url('@/assets/icons/04.svg') no-repeat center center / contain;
+  }
+}
+.icon-hammer {
+  &::before {
+    @extend .icon--default;
+    mask: url('@/assets/icons/05.svg') no-repeat center center / contain;
+  }
+}
+.icon-math {
+  &::before {
+    @extend .icon--default;
+    mask: url('@/assets/icons/06.svg') no-repeat center center / contain;
+  }
+}
+.icon-book {
+  &::before {
+    @extend .icon--default;
+    mask: url('@/assets/icons/07.svg') no-repeat center center / contain;
+  }
+}
+.icon-spoon {
+  &::before {
+    @extend .icon--default;
+    mask: url('@/assets/icons/08.svg') no-repeat center center / contain;
+  }
+}
+.icon-pen {
+  &::before {
+    @extend .icon--default;
+    mask: url('@/assets/icons/09.svg') no-repeat center center / contain;
+  }
+}
+.icon-telescope {
+  &::before {
+    @extend .icon--default;
+    mask: url('@/assets/icons/10.svg') no-repeat center center / contain;
+  }
+}
+.icon-camera {
+  &::before {
+    @extend .icon--default;
+    mask: url('@/assets/icons/11.svg') no-repeat center center / contain;
+  }
+}
+.icon-music {
+  &::before {
+    @extend .icon--default;
+    mask: url('@/assets/icons/12.svg') no-repeat center center / contain;
+  }
+}
+.icon-check {
+  &::before {
+    content: '';
+    @apply w-5 h-5 inline-block bg-white;
+    mask: url('@/assets/icons/check-icon.svg') no-repeat center center / contain;
+  }
+}
+.icon-eye {
+  &::before {
+    content: '';
+    @apply w-5 h-5 inline-block bg-white;
+    mask: url('@/assets/icons/view-icon.svg') no-repeat center center / contain;
+  }
+}
+.icon-send-heart {
+  &::before {
+    content: '';
+    @apply w-5 h-5 inline-block bg-white;
+    mask: url('@/assets/icons/send-heart-icon.svg') no-repeat center center /
+      contain;
+  }
+}
