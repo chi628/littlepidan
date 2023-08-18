@@ -17,6 +17,7 @@ import TheFooter from '@/components/TheFooter.vue';
 
 <template>
   <div class="w-full h-auto relative">
+    <MenuHamburger />
     <NavIndex />
     <BirthdayIndex />
     <Dan365Index />
