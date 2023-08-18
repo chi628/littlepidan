@@ -1,14 +1,24 @@
 <script setup lang="ts">
-import NavItem from './NavItem.vue'
-import { menu } from './item'
-import { useOpenMenu } from '@/stores/menu'
-const store = useOpenMenu()
+import NavItem from './NavItem.vue';
+import { menu } from './item';
+import { useOpenMenu } from '@/stores/menu';
+import { FetchMaxZIndex } from '@/utils/findZIndex';
+import { computed } from 'vue';
+
+const style = computed(() => {
+  const zindex = FetchMaxZIndex() + 1;
+  return {
+    zIndex: FetchMaxZIndex() + 1
+  };
+});
+const store = useOpenMenu();
 </script>
 <template>
   <Transition name="mobile-menu">
     <div
       v-if="store.isOpenMenu"
       class="fixed top-0 bottom-0 left-0 right-0 bg-[#f097b2] z-[2] flex flex-col items-center pt-8 pb-5"
+      :style="style"
     >
       <div class="text-[#fef6e9] text-center">
         <span>my</span><br />
@@ -29,9 +39,7 @@ const store = useOpenMenu()
       </div>
       <div class="absolute bottom-0">
         <img src="@/assets/images/menu-cloud-m.png" alt="" />
-        <div
-          class="text-[#ffe2ea] text-center text-base font-light absolute w-full left-1/2 -translate-x-1/2 bottom-4"
-        >
+        <div class="text-[#ffe2ea] text-center text-base font-light absolute w-full left-1/2 -translate-x-1/2 bottom-4">
           <p>HAPPY BIRTHDAY TO PIDAN</p>
           <p>Designed by ©Hung</p>
         </div>

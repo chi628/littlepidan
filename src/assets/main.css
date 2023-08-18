@@ -1,7 +1,3 @@
-@font-face {
-  font-family: futur;
-  src: url(./font/futur.ttf);
-}
 
 body::-webkit-scrollbar {
   display: none;
@@ -14,6 +10,10 @@ body::-webkit-scrollbar {
   padding: 2rem; */
 
   /* font-weight: normal; */
+}
+
+.dan-button {
+  @apply w-full h-[62px] leading-[62px] text-white text-lg text-center rounded-[31px] bg-gradient-to-r from-[#ef7ca4] to-[#f48b8b];
 }
 
 /* @import './base.css';
