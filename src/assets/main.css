@@ -1,19 +1,38 @@
-@font-face {
-  font-family: futur;
-  src: url(./font/futur.ttf);
-}
-
 body::-webkit-scrollbar {
   display: none;
 }
 
+html {
+  height: 100vh;
+  overflow: auto;
+}
+body {
+  height: 100%;
+}
+
 #app {
+  position: relative;
+  width: 100%;
+  /* height: 100vh; */
+  overflow-y: auto;
   overflow-x: hidden;
+  /* overflow: hidden; */
+  /* max-width: 100vw; */
+  /* height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto; */
+  /* 
+  overflow-y: auto;
+  height: 100vh; */
   /* max-width: 1280px;
   margin: 0 auto;
   padding: 2rem; */
 
   /* font-weight: normal; */
+}
+
+.dan-button {
+  @apply w-full h-[62px] leading-[62px] text-white text-lg text-center rounded-[31px] bg-gradient-to-r from-[#ef7ca4] to-[#f48b8b];
 }
 
 /* @import './base.css';

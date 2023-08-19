@@ -14,7 +14,10 @@ import CountDown from './CountDown.vue'
       >
         <p class="text-[32px] leading-[35px]">My</p>
         <p class="text-[64px]">First</p>
-        <p class="text-[64px]">Birthday</p>
+        <p class="text-[64px] inline-flex justify-center items-end">
+          Birthday
+          <span class="inline-block w-4 h-4 rounded-full bg-[#ffb62d]"></span>
+        </p>
       </div>
       <p
         class="text-sm font-normal font-noto-sans-TC absolute top-[265px] left-7"
@@ -40,7 +43,7 @@ import CountDown from './CountDown.vue'
   opacity: 0.5;
 }
 .bg2 {
-  background-image: url(@/assets/icon/egg-kv.png);
-  @apply bg-center bg-no-repeat bg-cover w-[100vw] h-[108vw] absolute top-[400px] -right-[80px];
+  background-image: url(@/assets/bgImg/egg-kv.png);
+  @apply bg-center bg-no-repeat bg-cover w-[100vw] max-w-[502px] h-[108vw] max-h-[584px] absolute top-[390px] -right-[80px] z-[3];
 }
 </style>

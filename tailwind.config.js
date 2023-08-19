@@ -8,6 +8,7 @@ module.exports = {
         'fira-sans': ['Fira Sans'],
         'noto-sans-TC': ['Noto Sans Traditional Chinese'],
         futura: ['Futura'],
+        ProximaNova: ['ProximaNova'],
       },
     },
   },

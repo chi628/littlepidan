@@ -1,31 +1,60 @@
 <script setup lang="ts">
-import NavBar from '@/components/NavBar.vue'
 import NavIndex from '@/components/nav/NavIndex.vue'
 import MenuHamburger from '@/components/nav/MenuHamburger.vue'
-import MobileBD from './components/birthday/MobileBD.vue'
-import Mobile365 from '@/components/dan365/Mobile365.vue'
-import MobileFirst from '@/components/first/MobileFirst.vue'
-import MobilePredict from '@/components/predict/MobilePredict.vue'
-import MobileBless from '@/components/bless/MobileBless.vue'
+import BirthdayIndex from '@/components/birthday/BirthdayIndex.vue'
+import Dan365Index from '@/components/dan365/Dan365Index.vue'
+import FirstIndex from '@/components/first/FIrstIndex.vue'
+import PredictIndex from '@/components/predict/PredictIndex.vue'
+import BlessIndex from '@/components/bless/BlessIndex.vue'
 import TheFooter from '@/components/TheFooter.vue'
+import ModalVote from '@/components/modal/vote.vue'
+import ModalComment from '@/components/modal/comment.vue'
+
+import { useLayout } from '@/utils/layout'
+import { ref } from 'vue'
+
+const { isMobile } = useLayout()
+
+const showTop = ref(false)
+
+window.addEventListener('scroll', () => {
+  showTop.value = window.pageYOffset > window.screen.height
+})
+
+const toTop = () => {
+  console.log('top ')
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: 'smooth',
+  })
+}
 </script>
 
 <template>
-  <div class="w-full h-auto relative">
-    <NavIndex />
-    <MenuHamburger />
-    <MobileBD />
-    <Mobile365 />
-    <MobileFirst />
-    <MobilePredict />
-    <MobileBless />
-    <TheFooter />
+  <!-- <div class="w-full h-auto relative">
+  
+  </div> -->
+  <MenuHamburger v-if="isMobile" />
+  <NavIndex />
+  <BirthdayIndex />
+  <Dan365Index />
+  <FirstIndex />
+  <PredictIndex />
+  <BlessIndex />
+  <div
+    class="w-[60px] h-[60px] rounded-[24px] bg-gradient-to-b from-[#fff] via-9% to-[#ffe6ee] fixed right-[30px] bottom-[30px] z-[10] shadow-[3px_8px_15px_0_rgba(0,0,0,0.2)] flex flex-col justify-center items-center space-y-1 cursor-pointer"
+    v-show="showTop"
+    @click="toTop"
+  >
+    <span class="icon-top"></span>
+    <div class="w-[35px] h-[1px] bg-[#ffe2ea]"></div>
+    <span
+      class="text-[#e762a0] font-ProximaNova text-base font-bold cursor-pointer"
+      >TOP</span
+    >
   </div>
+  <TheFooter />
+  <!-- <ModalComment /> -->
+  <!-- <ModalVote /> -->
 </template>
-<style lang="scss">
-.bg-cloud {
-  background-image: url(@/assets/images/cloud-m.png);
-
-  @apply w-screen h-[245vw] bg-no-repeat bg-center bg-cover;
-}
-</style>

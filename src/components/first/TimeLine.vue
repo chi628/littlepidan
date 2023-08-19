@@ -12,11 +12,14 @@ defineProps({
       class="w-[40%] h-[1px] bg-[#ffd0de] absolute top-1.5"
       :class="[$props.isRightSide ? 'right-0' : 'left-0']"
     >
-      <p class="text-[#e762a0] font-bold text-xl absolute -top-[30px]">
+      <p
+        class="text-[#e762a0] font-bold text-lg lg:text-xl absolute -top-[30px]"
+        :class="[$props.isRightSide ? 'left-0' : 'right-0']"
+      >
         {{ $props.title }}
       </p>
       <p
-        class="text-[#333] text-sm absolute top-1"
+        class="text-[#333] text-sm font-light absolute top-1"
         :class="[$props.isRightSide ? 'left-0' : 'right-0']"
       >
         {{ $props.describe }}
