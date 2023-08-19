@@ -96,3 +96,25 @@
       contain;
   }
 }
+.icon-close {
+  &::before {
+    content: '';
+    @apply w-6 h-6 inline-block bg-[#ef7ca4];
+    mask: url('@/assets/icons/close-m.svg') no-repeat center center / contain;
+  }
+}
+.icon-arrow {
+  &::before {
+    content: '';
+    @apply w-4 h-4 inline-block bg-[#333] lg:bg-[#ffd0de];
+    mask: url('@/assets/icons/menu-go-m.svg') no-repeat center center / contain;
+  }
+}
+.icon-top {
+  @apply inline-block w-4 h-4;
+  &::before {
+    content: '';
+    @apply w-4 h-4 inline-block bg-[#e762a0];
+    mask: url('@/assets/icons/top-icon.svg') no-repeat center center / contain;
+  }
+}

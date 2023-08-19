@@ -1,20 +1,21 @@
-import { computed, onBeforeUnmount, ref } from 'vue'
+import { computed, onBeforeUnmount, ref, markRaw } from 'vue'
 import { debounce } from '@/utils/func'
 
 export interface Breakpoints {
-  [key: number]: any
+  [key: number]: string | Object
 }
 
 export enum Breakpoint {
   DEAFULT = 0,
   MOBILE = 480,
-  TABLET = 600,
+  TABLET = 1024,
   DESKTOP = 1280,
 }
 
 export const useLayout = (payload?: { breakpoints: Breakpoints }) => {
   const screenWidth = ref(0)
   const componentName = ref('div')
+  const componentObj = ref({})
   const breakpoints = Object.keys(payload?.breakpoints || [])
     .map((o) => parseInt(o))
     .sort((a, b) => (a > b ? 1 : -1))
@@ -27,7 +28,7 @@ export const useLayout = (payload?: { breakpoints: Breakpoints }) => {
         : window.innerHeight
     }
     if (payload && payload.breakpoints) {
-      componentName.value = breakpoints.reduce((p, c) => {
+      componentObj.value = breakpoints.reduce((p, c) => {
         if (width >= c) {
           return payload.breakpoints[c]
         }
@@ -53,13 +54,11 @@ export const useLayout = (payload?: { breakpoints: Breakpoints }) => {
 
   return {
     screenWidth,
-    isSuitableForMobile: computed(() => {
-      return screenWidth.value < Breakpoint.DESKTOP
-    }),
     isMobile: computed(() => {
       return screenWidth.value < Breakpoint.TABLET
     }),
     unUseLayout,
     componentName,
+    componentObj,
   }
 }

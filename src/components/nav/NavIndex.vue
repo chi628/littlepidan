@@ -3,27 +3,18 @@ import DesktopNav from './DesktopNav.vue'
 import MobileNav from './MobileNav.vue'
 import MenuHamburger from './MenuHamburger.vue'
 import { computed, onBeforeMount } from 'vue'
-import { useLayout, Breakpoint } from '../../utils/layout'
 import { useOpenMenu } from '@/stores/menu'
+import { useLayout, Breakpoint } from '@/utils/layout'
 
 const store = useOpenMenu()
 
-const isMobile = computed(() => window.innerWidth < 1024)
-
-onBeforeMount(() => {
-  if (isMobile.value) {
-    store.isOpen = false
-  }
+const { isMobile, componentObj } = useLayout({
+  breakpoints: {
+    [Breakpoint.DEAFULT]: MobileNav,
+    [Breakpoint.TABLET]: DesktopNav,
+  },
 })
-
-const component = computed(() => {
-  if (isMobile.value) {
-    // return store.isOpenMenu ? MobileNav : MenuHamburger
-    return MobileNav
-  } else {
-    return DesktopNav
-  }
-})
+const component = computed(() => componentObj.value)
 </script>
 <template>
   <component :is="component"></component>
