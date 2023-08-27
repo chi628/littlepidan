@@ -1,3 +1,31 @@
+<script setup lang="ts">
+import { onMounted, ref, computed } from "vue"
+import { GetBlessList, MakeBless } from "@/services/bless"
+import { useBlessStore } from "@/stores/bless"
+import { NotyModal } from "@/services/modal"
+
+const store = useBlessStore()
+
+const blessContent = ref()
+
+const blessList = computed(() => store.blessList)
+
+onMounted(() => {
+  GetBlessList()
+})
+
+const sendBless = () => {
+  if (blessContent.value) {
+    MakeBless({
+      name: "Miko",
+      comment: blessContent.value,
+    }).then(() => {
+      blessContent.value = ""
+    })
+    NotyModal()
+  }
+}
+</script>
 <template>
   <div id="bless" class="w-full bg-[#ffc1ca]">
     <div class="lg:w-[40vw] h-auto mx-auto">
@@ -5,12 +33,19 @@
     </div>
     <div class="w-[70%] mx-auto flex items-center justify-center space-x-3">
       <div class="bg-birthday-cake"></div>
-      <div class="flex flex-col justify-center items-center space-y-[30px]">
+      <div class="flex flex-col justify-center items-center relative">
+        <!-- space-y-[30px] -->
+        <!-- <div class="w-full h-[180px] bg-red-400 absolute top-0 left-0"></div> -->
         <textarea
           class="w-full lg:w-[553px] h-[180px] rounded-[20px] p-5 hover:outline-none active:outline-none focus:outline-none resize-none"
           placeholder="撰寫祝福⋯⋯"
+          v-model="blessContent"
         />
-        <div class="dan-button w-[342px]">
+
+        <div
+          class="dan-button w-[342px] mt-[30px] cursor-pointer"
+          @click="sendBless"
+        >
           <p class="inline-flex justify-center items-center">
             <span class="icon-send-heart inline-flex w-6 h-6 pr-2"></span
             >傳送祝福
@@ -21,28 +56,30 @@
     <div
       class="w-full lg:w-[85%] mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 relative -left-4 lg:left-0"
     >
-      <div class="bg-memo">
+      <div
+        class="bg-memo"
+        v-for="(bless, index) in blessList"
+        :key="`bless-${index}`"
+      >
         <p
           class="text-[#333333] font-light w-[150px] absolute top-10 left-[42px] ellipsis-5 p-1"
         >
-          祝小蛋平安健康
-          越來越漂亮祝小蛋平安健康越來越漂亮祝小蛋平安健康越來越漂亮
-          越來越漂亮祝小蛋平安健康越來越漂亮祝小蛋平安健康越來越漂亮
+          {{ bless.comment }}
         </p>
       </div>
-      <div class="bg-memo">
+      <!-- <div class="bg-memo">
         <p
           class="text-[#333333] font-light w-[150px] absolute top-10 left-[42px] ellipsis-5 p-1"
           v-html="`祝小蛋平安健康<br/> 越來越漂亮`"
         ></p>
-      </div>
+      </div> -->
+      <!-- <div class="bg-memo"></div>
       <div class="bg-memo"></div>
       <div class="bg-memo"></div>
       <div class="bg-memo"></div>
       <div class="bg-memo"></div>
       <div class="bg-memo"></div>
-      <div class="bg-memo"></div>
-      <div class="bg-memo"></div>
+      <div class="bg-memo"></div> -->
     </div>
   </div>
 </template>

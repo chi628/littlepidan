@@ -1,21 +1,23 @@
 <script lang="ts" setup>
-import CountDown from './CountDown.vue'
+import CountDown from "./CountDown.vue"
 </script>
 <template>
-  <div class="w-full h-[460px] relative pl-[60px] pt-[75px]">
+  <div class="w-full min-h-[460px] h-[32vw] relative pl-[60px] pt-[75px]">
     <div class="w-[475px] h-[150px] relative">
       <div class="w-[111px] h-[111px] rounded-full bg-[#ffefad]"></div>
       <div class="font-futura absolute left-[38px] top-2">
-        <p class="text-[35px] leading-[35px]">My</p>
+        <p class="text-[35px] leading-[40px]">My</p>
         <p
-          class="text-[70px] leading-[70px] inline-flex justify-center items-end"
+          class="text-[70px] leading-[75px] inline-flex justify-center items-end"
         >
           First Birthday
           <span class="inline-block w-4 h-4 rounded-full bg-[#ffb62c]"></span>
         </p>
       </div>
-      <p class="font-light text-[#333333] ml-[44px] font-noto-sans-TC">
-        我是歐又禎，也可以叫我歐小蛋，我要滿一歲了！
+      <p
+        class="font-light text-[#333333] ml-[44px] font-noto-sans-TC relative top-2"
+      >
+        我是歐小蛋，我要滿一歲了！
       </p>
     </div>
     <CountDown class="ml-[40px] mt-[55px]" />
