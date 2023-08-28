@@ -1,3 +1,89 @@
+<script setup lang="ts">
+import { ref, onMounted, inject, computed, reactive } from "vue"
+import polaroidImg from "./polaroidImg.vue"
+import { GetImgList } from "@/services/album"
+import { commentModal } from "@/services/modal"
+
+const album = ref()
+const leftPage = ref()
+const rightPage = ref()
+// const leftImgs = ref<{ id: string; url: string }[]>()
+// const rightImgs = ref<{ id: string; url: string }[]>()
+const isFetching = ref(false)
+const currentPage = ref(1)
+const totalPage = ref()
+
+const imgList = ref<{ id: string; url: string }[]>([])
+
+onMounted(async () => {
+  fetchImgs()
+})
+
+const leftStart = computed(() => {
+  if (currentPage.value === 1) {
+    return 0
+  }
+  return (currentPage.value - 1) * 8
+})
+const rightEnd = computed(() => currentPage.value * 8)
+
+const leftImgs = computed(() => {
+  return (
+    imgList.value && imgList.value.slice(leftStart.value, leftStart.value + 4)
+  )
+})
+
+const rightImgs = computed(() => {
+  return imgList.value.slice(rightEnd.value - 4, rightEnd.value)
+})
+
+const fetchImgs = async () => {
+  if (isFetching.value) {
+    return
+  }
+
+  isFetching.value = true
+  const res = await GetImgList()
+  imgList.value = res.imgList
+  totalPage.value = Math.ceil(res.total / 8)
+
+  console.log("i", imgList.value, res.imgList)
+
+  // leftImgs.value = res.imgList.splice(leftStart.value, leftStart.value + 4)
+  // rightImgs.value = res.imgList.splice(rightEnd.value - 4, rightEnd.value)
+  isFetching.value = false
+}
+
+const nextPage = () => {
+  if (currentPage.value < totalPage.value) {
+    console.log("nextPage")
+    rightPage.value.style.transform = "rotateY(-180deg)"
+    rightPage.value.style.backgroundColor = "white"
+    rightPage.value.style.borderColor = "gray"
+    setTimeout(() => {
+      rightPage.value.style.borderColor = "transparent"
+      rightPage.value.style.transform = ""
+      rightPage.value.style.backgroundColor = ""
+    }, 500)
+    currentPage.value += 1
+  }
+}
+
+const prePage = () => {
+  if (currentPage.value > 1) {
+    leftPage.value.style.transform = "rotateY(-180deg)"
+    leftPage.value.style.backgroundColor = "white"
+    leftPage.value.style.borderColor = "red"
+    setTimeout(() => {
+      // currentPage.value -= 1
+      leftPage.value.style.borderColor = "transparent"
+      leftPage.value.style.transform = ""
+      leftPage.value.style.backgroundColor = ""
+    }, 500)
+    currentPage.value -= 1
+  }
+}
+</script>
 <template>
   <div class="bg-cloud">
     <img src="@/assets/title/tt-365.png" alt="" class="pt-[210px]" />
@@ -19,22 +105,30 @@
       </div>
     </div>
     <div class="bg-album">
-      <div class="w-full h-full">
-        <div
-          class="w-1/2 h-full p-[5%] grid grid-cols-2 gap-x-2 gap-y-8 absolute left-0"
-        >
+      <div ref="album" class="w-full h-full relative">
+        <div class="absolute w-full h-full top-0 left-0 perspective">
+          <div
+            class="w-1/2 h-full p-[5%] grid grid-cols-2 gap-x-2 gap-y-8 absolute left-0"
+          >
+            <polaroidImg
+              v-for="(item, index) in leftImgs"
+              :key="item.id"
+              :url="item.url"
+            />
+            <!-- <div class="w-full h-[100%] bg-red-400"></div>
           <div class="w-full h-[100%] bg-red-400"></div>
           <div class="w-full h-[100%] bg-red-400"></div>
-          <div class="w-full h-[100%] bg-red-400"></div>
-          <div class="w-full h-[100%] bg-red-400"></div>
-        </div>
-        <div
-          class="w-1/2 h-full p-[5%] grid grid-cols-2 gap-x-2 gap-y-8 absolute right-0"
-        >
-          <div class="w-full h-[100%] bg-red-400"></div>
-          <div class="w-full h-[100%] bg-red-400"></div>
-          <div class="w-full h-[100%] bg-red-400"></div>
-          <div class="w-full h-[100%] bg-red-400"></div>
+          <div class="w-full h-[100%] bg-red-400"></div> -->
+          </div>
+          <div
+            class="w-1/2 h-full p-[5%] grid grid-cols-2 gap-x-2 gap-y-8 absolute right-0"
+          >
+            <polaroidImg
+              v-for="(item, index) in rightImgs"
+              :key="item.id"
+              :url="item.url"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -43,12 +137,14 @@
     >
       <div
         class="w-[40%] h-[48px] leading-[48px] text-center text-[#fef6e9] text-lg bg-gradient-to-r from-[#f48d8b] via-3% to-[#d06a68] via-96% rounded-[24px]"
+        @click="prePage"
       >
         上一頁
       </div>
 
       <div
         class="w-[40%] h-[48px] leading-[48px] text-center text-[#fef6e9] text-lg bg-gradient-to-r from-[#f48d8b] via-3% to-[#d06a68] via-96% rounded-[24px]"
+        @click="nextPage"
       >
         下一頁
       </div>
