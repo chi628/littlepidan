@@ -9,6 +9,9 @@ import {
 import { db } from "./firebase"
 import { usePredicateStore } from "@/stores/predicate"
 import { useUserStore } from "@/stores/user"
+import type { Predicate } from "@/type/predicate"
+import { computed } from "vue"
+import { userName } from '@/repo/user'
 
 export const MakePredicate = async (items: string[]) => {
   const store = useUserStore()
@@ -23,16 +26,27 @@ export const MakePredicate = async (items: string[]) => {
       { merge: true }
     )
   })
-  // const store = usePredicateStore()
-  // store.setItemList(items)
+  // GetAllPredicate()
 }
 
 export const GetPredicateAmount = () => {}
 
-export const GetTest = async () => {
+export const GetAllPredicate = async () => {
   const querySnapshot = await getDocs(collection(db, "predicate"))
+  const list: Predicate[] = []
+  const store = usePredicateStore()
   querySnapshot.forEach((doc) => {
-    // doc.data() is never undefined for query doc snapshots
-    console.log("docdocdocdoc", doc.id, " => ", doc.data())
+    list.push({
+      id: doc.id,
+      count: doc.data().count,
+      users: doc.data().user
+    })
   })
+
+  store.setItemInfo(list)
+}
+
+export const GetMyPredicate = () => {
+  const store = usePredicateStore()
+  return store.myPredicate
 }

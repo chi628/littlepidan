@@ -1,121 +1,111 @@
 <script setup lang="ts">
-import { onMounted, ref, computed } from "vue"
-import { GetBlessList, MakeBless } from "@/services/bless"
-import { useBlessStore } from "@/stores/bless"
-import { NotyModal } from "@/services/modal"
+import { onMounted, ref, computed } from 'vue';
+import Note from './note.vue';
+import TheLoading from '@/components/TheLoading.vue';
+import { GetBlessList, MakeBless } from '@/services/bless';
+import { ConfirmModal, UserNameModal } from '@/services/modal';
+import { useBlessStore } from '@/stores/bless';
+import { userName } from '@/repo/user';
+import { useLayout } from '@/utils/layout';
 
-const store = useBlessStore()
+const store = useBlessStore();
+const { isMobile } = useLayout();
 
-const blessContent = ref()
+const blessContent = ref('');
+const isFetching = ref(false);
+const isLoading = ref(false);
+const noData = ref(false);
 
-const blessList = computed(() => store.blessList)
+const blessList = computed(() => store.blessList);
 
 onMounted(() => {
-  GetBlessList()
-})
+  fetchBlessList();
+});
+
+const fetchBlessList = async () => {
+  if (isFetching.value) {
+    return;
+  }
+  isFetching.value = true;
+  await GetBlessList();
+  isFetching.value = false;
+  noData.value = blessList.value.length === 0;
+};
 
 const sendBless = () => {
   if (blessContent.value) {
+    isLoading.value = true;
+
     MakeBless({
-      name: "Miko",
-      comment: blessContent.value,
+      name: userName(),
+      comment: blessContent.value
     }).then(() => {
-      blessContent.value = ""
-    })
-    NotyModal()
+      isLoading.value = false;
+      blessContent.value = '';
+      ConfirmModal('蛋蛋收到嚕');
+    });
   }
-}
+};
 </script>
 <template>
-  <div id="bless" class="w-full bg-[#ffc1ca]">
-    <div class="lg:w-[40vw] h-auto mx-auto">
+  <div id="bless" class="w-full bg-[#ffc1ca] pb-20 relative">
+    <div class="w-[80%] lg:w-[40vw] h-auto mx-auto">
       <img src="@/assets/title/tt-ur-bless.png" alt="" class="w-full h-auto" />
     </div>
-    <div class="w-[70%] mx-auto flex items-center justify-center space-x-3">
-      <div class="bg-birthday-cake"></div>
-      <div class="flex flex-col justify-center items-center relative">
-        <!-- space-y-[30px] -->
-        <!-- <div class="w-full h-[180px] bg-red-400 absolute top-0 left-0"></div> -->
+    <div class="w-[70%] mx-auto flex items-center justify-center space-x-3 mb-[50px] lg:mb-0">
+      <div :class="[isMobile ? 'bg-birthday-cake-m' : 'bg-birthday-cake']"></div>
+      <div class="w-full lg:w-auto flex flex-col justify-center items-center relative">
+        <div v-if="!userName()" class="w-full h-[180px] bg-transparent absolute top-0" @click="UserNameModal()"></div>
         <textarea
           class="w-full lg:w-[553px] h-[180px] rounded-[20px] p-5 hover:outline-none active:outline-none focus:outline-none resize-none"
           placeholder="撰寫祝福⋯⋯"
           v-model="blessContent"
         />
-
         <div
-          class="dan-button w-[342px] mt-[30px] cursor-pointer"
+          class="w-[342px] h-[62px] leading-[62px] text-lg text-center rounded-[31px] mt-[30px]"
+          :class="[
+            blessContent
+              ? 'text-white bg-gradient-to-r from-[#ef7ca4] to-[#f48b8b] cursor-pointer'
+              : 'bg-[#8E8E8E] text-[#D0D0D0] cursor-not-allowed'
+          ]"
           @click="sendBless"
         >
-          <p class="inline-flex justify-center items-center">
-            <span class="icon-send-heart inline-flex w-6 h-6 pr-2"></span
-            >傳送祝福
+          <TheLoading v-if="isLoading" />
+          <p v-else class="inline-flex justify-center items-center">
+            <span class="icon-send-heart inline-flex w-6 h-6 pr-2"></span>傳送祝福
           </p>
         </div>
       </div>
     </div>
     <div
-      class="w-full lg:w-[85%] mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 relative -left-4 lg:left-0"
+      v-if="noData"
+      class="w-[85%] mx-auto min-h-[250px] leading-[250px] text-[#333] font-bold text-[32px] text-center"
     >
-      <div
-        class="bg-memo"
+      一起來祝小蛋生日快樂吧 ❤️
+    </div>
+    <div
+      v-else
+      class="w-full lg:w-[85%] mx-auto grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-y-[50px] relative justify-items-center"
+      :class="{ 'min-h-[250px] skeleton': isFetching }"
+    >
+      <Note
         v-for="(bless, index) in blessList"
         :key="`bless-${index}`"
-      >
-        <p
-          class="text-[#333333] font-light w-[150px] absolute top-10 left-[42px] ellipsis-5 p-1"
-        >
-          {{ bless.comment }}
-        </p>
-      </div>
-      <!-- <div class="bg-memo">
-        <p
-          class="text-[#333333] font-light w-[150px] absolute top-10 left-[42px] ellipsis-5 p-1"
-          v-html="`祝小蛋平安健康<br/> 越來越漂亮`"
-        ></p>
-      </div> -->
-      <!-- <div class="bg-memo"></div>
-      <div class="bg-memo"></div>
-      <div class="bg-memo"></div>
-      <div class="bg-memo"></div>
-      <div class="bg-memo"></div>
-      <div class="bg-memo"></div>
-      <div class="bg-memo"></div> -->
+        :userName="bless.name"
+        :content="bless.comment"
+      />
     </div>
   </div>
 </template>
 <style lang="scss">
+.bg-birthday-cake-m {
+  background-image: url(@/assets/images/cake.png);
+  @apply bg-no-repeat bg-center bg-contain;
+  @apply w-[60vw] max-w-[450px] h-[54vw] absolute -top-[35vw] -right-[5vw];
+}
 .bg-birthday-cake {
   background-image: url(@/assets/images/cake.png);
   @apply bg-no-repeat bg-center bg-contain;
   @apply w-[450px] h-[450px];
-}
-.bg-memo {
-  background-image: url(@/assets/bless/memo-1.png);
-  @apply bg-no-repeat bg-center bg-contain;
-  // @apply w-[180px] h-[150px] lg:w-[250px] lg:h-[210px];
-  @apply w-[250px] h-[210px] relative;
-}
-@mixin ellipsis {
-  overflow: hidden;
-  display: -webkit-box;
-  text-overflow: ellipsis;
-  -webkit-box-orient: vertical;
-  word-break: break-all;
-}
-
-.ellipsis {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-
-  &-1 {
-    @include ellipsis;
-    -webkit-line-clamp: 1;
-  }
-
-  &-5 {
-    @include ellipsis;
-    -webkit-line-clamp: 5;
-  }
 }
 </style>

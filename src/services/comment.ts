@@ -43,11 +43,7 @@ export const GetComment = async (id: string) => {
     // const likeRef = collection(doc(commentRef, id), "likeCount")
     // setDoc(doc(msgRef, "miko"), {})
     // setDoc(doc(likeRef, "miko"), {})
-    await setDoc(doc(db, "comment", id), {
-      user: "miko",
-      comment: "",
-      likeCount: 0,
-    })
+    await setDoc(doc(db, "comment", id), {})
     // return {
     //   noData: true,
     // }

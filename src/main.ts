@@ -1,4 +1,4 @@
-import './assets/main.css'
+import './assets/main.scss'
 import './assets/tailwind.css'
 import './assets/icon.scss'
 

@@ -25,8 +25,10 @@ export const UserNameModal = () => {
   openModal(() => import("@/components/modal/name.vue"))
 }
 
-export const NotyModal = () => {
-  openModal(() => import("@/components/modal/vote.vue"))
+export const ConfirmModal = (content: string) => {
+  openModal(() => import("@/components/modal/confirm.vue"), {
+    content
+  })
 }
 
 export const scoreModal = () => {
