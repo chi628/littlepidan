@@ -42,7 +42,7 @@ const list = [
   },
   {
     icon: "spoon",
-    name: "珠算",
+    name: "湯匙",
   },
   {
     icon: "pen",
