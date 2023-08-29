@@ -3,7 +3,7 @@ import { db } from "./firebase"
 import type { Bless } from "@/type/bless"
 import { useBlessStore } from "@/stores/bless"
 
-const BLESS_COLLECTION = 'bless'
+const BLESS_COLLECTION = "bless"
 
 export const GetBlessList = async () => {
   const collectionRef = collection(db, BLESS_COLLECTION)
