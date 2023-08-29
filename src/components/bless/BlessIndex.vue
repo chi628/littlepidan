@@ -16,9 +16,10 @@ const { isMobile } = useLayout()
 const blessContent = ref("")
 const isFetching = ref(false)
 const isLoading = ref(false)
-const noData = ref(false)
 
 const blessList = computed(() => store.blessList)
+
+const noData = computed(() => blessList.value.length === 0)
 
 onMounted(() => {
   fetchBlessList()
@@ -31,7 +32,6 @@ const fetchBlessList = async () => {
   isFetching.value = true
   await GetBlessList()
   isFetching.value = false
-  noData.value = blessList.value.length === 0
 }
 
 const sendBless = () => {
