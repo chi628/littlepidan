@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, watchEffect } from 'vue';
+import TitlePredicate from '@/assets/title/tt-predict.png';
 import PickItem from './PickItem.vue';
 import TheLoading from '@/components/TheLoading.vue';
 import { MakePredicate, GetAllPredicate, GetMyPredicate } from '@/services/predicate';
@@ -123,7 +124,7 @@ const isSelectedItem = (item: string) => {
 <template>
   <div id="predict" class="w-full h-[235vw] max-h-[1300px] lg:h-[896px] bg-[#fef8e9]">
     <div class="w-[80%] lg:w-[40vw] h-auto mx-auto">
-      <img src="@/assets/title/tt-predict.png" alt="" class="w-full h-auto" />
+      <img v-lazy="TitlePredicate" alt="" class="w-full h-auto" />
     </div>
     <div
       class="w-[90%] lg:w-[60vw] mx-auto h-auto grid grid-cols-4 justify-items-center lg:grid-cols-6 gap-4 lg:gap-[60px] relative"

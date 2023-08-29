@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref, computed } from 'vue';
+import TitleBless from '@/assets/title/tt-ur-bless.png';
+import BirthdayCakeImg from '@/assets/images/cake.png';
 import Note from './note.vue';
 import TheLoading from '@/components/TheLoading.vue';
 import { GetBlessList, MakeBless } from '@/services/bless';
@@ -50,10 +52,13 @@ const sendBless = () => {
 <template>
   <div id="bless" class="w-full bg-[#ffc1ca] pb-20 relative">
     <div class="w-[80%] lg:w-[40vw] h-auto mx-auto">
-      <img src="@/assets/title/tt-ur-bless.png" alt="" class="w-full h-auto" />
+      <img v-lazy="TitleBless" alt="" class="w-full h-auto" />
     </div>
     <div class="w-[70%] mx-auto flex items-center justify-center space-x-3 mb-[50px] lg:mb-0">
-      <div :class="[isMobile ? 'bg-birthday-cake-m' : 'bg-birthday-cake']"></div>
+      <div
+        v-lazy:background-image="BirthdayCakeImg"
+        :class="[isMobile ? 'bg-birthday-cake-m' : 'bg-birthday-cake']"
+      ></div>
       <div class="w-full lg:w-auto flex flex-col justify-center items-center relative">
         <div v-if="!userName()" class="w-full h-[180px] bg-transparent absolute top-0" @click="UserNameModal()"></div>
         <textarea
@@ -99,12 +104,10 @@ const sendBless = () => {
 </template>
 <style lang="scss">
 .bg-birthday-cake-m {
-  background-image: url(@/assets/images/cake.png);
   @apply bg-no-repeat bg-center bg-contain;
   @apply w-[60vw] max-w-[450px] h-[54vw] absolute -top-[35vw] -right-[5vw];
 }
 .bg-birthday-cake {
-  background-image: url(@/assets/images/cake.png);
   @apply bg-no-repeat bg-center bg-contain;
   @apply w-[450px] h-[450px];
 }
