@@ -2,12 +2,18 @@
 defineProps({
   icon: String,
   name: String,
-})
+  canSelected: Boolean,
+  hasSelected: Boolean
+});
 </script>
 <template>
   <div class="space-y-1 w-20">
     <div
-      class="w-20 h-20 bg-[#ffd857] rounded-[24px] flex justify-center items-center cursor-pointer"
+      class="w-20 h-20 rounded-[24px] flex justify-center items-center"
+      :class="[
+        $props.hasSelected ? 'bg-[#ef7ca4]' : 'bg-[#ffd857]',
+        $props.canSelected ? 'cursor-pointer' : 'cursor-not-allowed'
+      ]"
     >
       <span :class="`icon-${$props.icon}`"></span>
     </div>

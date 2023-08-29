@@ -1,40 +1,56 @@
 <script setup lang="ts">
-import NavIndex from '@/components/nav/NavIndex.vue'
-import MenuHamburger from '@/components/nav/MenuHamburger.vue'
-import BirthdayIndex from '@/components/birthday/BirthdayIndex.vue'
-import Dan365Index from '@/components/dan365/Dan365Index.vue'
-import FirstIndex from '@/components/first/FIrstIndex.vue'
-import PredictIndex from '@/components/predict/PredictIndex.vue'
-import BlessIndex from '@/components/bless/BlessIndex.vue'
-import TheFooter from '@/components/TheFooter.vue'
-import ModalVote from '@/components/modal/vote.vue'
-import ModalComment from '@/components/modal/comment.vue'
+import NavIndex from '@/components/nav/NavIndex.vue';
+import MenuHamburger from '@/components/nav/MenuHamburger.vue';
+import BirthdayIndex from '@/components/birthday/BirthdayIndex.vue';
+import Dan365Index from '@/components/dan365/Dan365Index.vue';
+import FirstIndex from '@/components/first/FIrstIndex.vue';
+import PredictIndex from '@/components/predict/PredictIndex.vue';
 
-import { useLayout } from '@/utils/layout'
-import { ref } from 'vue'
+import BlessIndex from '@/components/bless/BlessIndex.vue';
+import TheFooter from '@/components/TheFooter.vue';
+import { UserNameModal } from '@/services/modal';
+import { useLayout } from '@/utils/layout';
+import { ref, onMounted } from 'vue';
+import { useUserStore } from '@/stores/user';
 
-const { isMobile } = useLayout()
+import { debounce } from './utils/func';
+const { isMobile } = useLayout();
 
-const showTop = ref(false)
+const showTop = ref(false);
 
-window.addEventListener('scroll', () => {
-  showTop.value = window.pageYOffset > window.screen.height
-})
-
-const toTop = () => {
-  console.log('top ')
+onMounted(() => {
+  const userName = localStorage.getItem('user');
+  if (userName) {
+    const store = useUserStore();
+    store.setName(userName);
+  } else {
+    // UserNameModal()
+  }
   window.scrollTo({
     top: 0,
     left: 0,
-    behavior: 'smooth',
-  })
-}
+    behavior: 'smooth'
+  });
+});
+
+window.addEventListener(
+  'scroll',
+  debounce(() => {
+    showTop.value = window.pageYOffset > window.screen.height;
+  }),
+  300
+);
+
+const toTop = () => {
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: 'smooth'
+  });
+};
 </script>
 
 <template>
-  <!-- <div class="w-full h-auto relative">
-  
-  </div> -->
   <MenuHamburger v-if="isMobile" />
   <NavIndex />
   <BirthdayIndex />
@@ -49,12 +65,7 @@ const toTop = () => {
   >
     <span class="icon-top"></span>
     <div class="w-[35px] h-[1px] bg-[#ffe2ea]"></div>
-    <span
-      class="text-[#e762a0] font-ProximaNova text-base font-bold cursor-pointer"
-      >TOP</span
-    >
+    <span class="text-[#e762a0] font-ProximaNova text-base font-bold cursor-pointer">TOP</span>
   </div>
   <TheFooter />
-  <!-- <ModalComment /> -->
-  <!-- <ModalVote /> -->
 </template>
