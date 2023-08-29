@@ -69,7 +69,7 @@ const prePage = () => {
             >
               <div class="w-full h-[5%]"></div>
               <div
-                class="w-full h-[90%] grid grid-cols-2 gap-2 items-center justify-items-center"
+                class="w-full h-[90%] grid grid-cols-2 gap-2 justify-items-center"
               >
                 <div
                   :class="{ 'w-full h-full skeleton': showPreSkeleton }"
@@ -132,7 +132,7 @@ const prePage = () => {
             <div class="w-full h-full p-[5%] space-y-1">
               <div class="w-full h-[2%]"></div>
               <div
-                class="w-full h-[90%] grid grid-cols-2 gap-2 items-center justify-items-center"
+                class="w-full h-[90%] grid grid-cols-2 gap-2 justify-items-center"
               >
                 <slot name="rightImgs"></slot>
               </div>

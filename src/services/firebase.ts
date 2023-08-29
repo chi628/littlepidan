@@ -3,13 +3,13 @@ import { getFirestore } from "firebase/firestore"
 import { getStorage } from "firebase/storage"
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAgtsvt_YKJwCVUXvXVVz9FX_vtYO-68hc",
-  authDomain: "dandan-e6bb5.firebaseapp.com",
-  projectId: "dandan-e6bb5",
-  storageBucket: "dandan-e6bb5.appspot.com",
-  messagingSenderId: "742573490319",
-  appId: "1:742573490319:web:56f8235e551f43630770fa",
-  measurementId: "G-GGKBL2LPGJ",
+  apiKey: "AIzaSyDsj0KDqd7e5g2u9vEXeT9Avky-llG3TAQ",
+  authDomain: "danbd-71417.firebaseapp.com",
+  projectId: "danbd-71417",
+  storageBucket: "danbd-71417.appspot.com",
+  messagingSenderId: "746162621702",
+  appId: "1:746162621702:web:72f1c6726b765ae841a287",
+  measurementId: "G-CHHF0QLX6E",
 }
 
 // Initialize Firebase

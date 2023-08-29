@@ -64,7 +64,11 @@ const prePage = () => {
         class="w-[66px] h-[66px] rounded-full absolute top-1/2 -translate-y-1/2 right-[8.5vw] shadow-[3px_3px_20px_0_rgba(0,0,0,0.25)]"
         :class="[$attrs.canNextPage ? 'btn-enabled ' : 'btn-disabled']"
         @click="nextPage"
-      ></div>
+      >
+        <span
+          class="inline-block w-4 h-4 bd-icon-right-arrow absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        ></span>
+      </div>
       <div
         ref="album"
         class="w-[65.5%] h-[65.5%] absolute left-[16.5%] top-[16.5%]"
@@ -107,7 +111,7 @@ const prePage = () => {
                 ></span>
               </p>
               <div
-                class="w-full h-[90%] grid grid-cols-2 gap-2 items-center justify-items-center"
+                class="w-full h-[90%] grid grid-cols-2 gap-2 justify-items-center"
               >
                 <slot name="leftImgs"></slot>
               </div>
@@ -142,7 +146,7 @@ const prePage = () => {
             <div class="w-full h-full p-[5%] space-y-1">
               <div class="w-full h-[5%]"></div>
               <div
-                class="w-full h-[90%] grid grid-cols-2 gap-2 items-center justify-items-center"
+                class="w-full h-[90%] grid grid-cols-2 gap-2 justify-items-center"
               >
                 <slot name="rightImgs"></slot>
               </div>
@@ -163,7 +167,11 @@ const prePage = () => {
         class="w-[66px] h-[66px] rounded-full absolute top-1/2 left-[7.5vw] -translate-y-1/2 shadow-[3px_3px_20px_0_rgba(0,0,0,0.25)]"
         :class="[$attrs.canPrePage ? 'btn-enabled' : 'btn-disabled']"
         @click="prePage"
-      ></div>
+      >
+        <span
+          class="inline-block w-4 h-4 bd-icon-left-arrow absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        ></span>
+      </div>
     </div>
   </div>
 </template>
@@ -180,5 +188,21 @@ const prePage = () => {
   background-image: url(@/assets/images/album_shadow.png);
   @apply bg-center bg-no-repeat bg-cover w-[80vw] h-[62.4vw];
   @apply absolute right-[5vw] -bottom-[15vw];
+}
+.bd-icon-right-arrow {
+  &::before {
+    content: "";
+    @apply inline-block bg-white w-4 h-4;
+
+    mask: url("@/assets/icons/path-49.svg") no-repeat center center / contain;
+  }
+}
+.bd-icon-left-arrow {
+  &::before {
+    content: "";
+    @apply inline-block bg-[#fef6e9] w-4 h-4;
+
+    mask: url("@/assets/icons/arrow-left.svg") no-repeat center center / contain;
+  }
 }
 </style>
