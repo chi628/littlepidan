@@ -65,7 +65,7 @@ const prePage = () => {
           >
             <div
               ref="leftPage"
-              class="absolute top-0 left-0 w-full h-full bg-transparent origin-right transform duration-200 border border-solid z-[1] shadow-md p-[5%]"
+              class="absolute top-0 left-0 w-full h-full bg-transparent origin-right transform duration-200 border border-solid z-[2] shadow-md p-[5%]"
             >
               <div class="w-full h-[5%]"></div>
               <div
@@ -107,7 +107,7 @@ const prePage = () => {
           <div class="absolute w-[45%] h-[97%] top-[1.5%] right-[5%] bg-white">
             <div
               ref="rightPage"
-              class="absolute top-0 right-0 w-full h-full bg-transparent origin-left transition-transform duration-500 border border-solid z-[2] p-[5%]"
+              class="absolute top-0 right-0 w-full h-full origin-left transition-transform duration-500 border border-solid z-[1] p-[5%] bg-transparent"
             >
               <div class="w-full h-[5%]"></div>
               <div
@@ -129,7 +129,7 @@ const prePage = () => {
 
               <div class="w-full h-[5%]"></div>
             </div>
-            <div class="w-full h-full p-[5%] space-y-1">
+            <div class="w-full h-full p-[5%] space-y-1 relative z-[3]">
               <div class="w-full h-[2%]"></div>
               <div
                 class="w-full h-[90%] grid grid-cols-2 gap-2 justify-items-center"

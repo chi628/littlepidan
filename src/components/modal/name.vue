@@ -1,35 +1,37 @@
 <script setup lang="ts">
-import { computed, onMounted, ref, inject } from 'vue';
-import Modal from './modal.vue';
-import { useUserStore } from '@/stores/user';
-import { CLOSE_MODAL } from '@/services/modal';
+import { computed, onMounted, ref, inject } from "vue"
+import Modal from "./modal.vue"
+import { useUserStore } from "@/stores/user"
+import { CLOSE_MODAL } from "@/services/modal"
 
-const close = inject(CLOSE_MODAL);
+const close = inject(CLOSE_MODAL)
 
-const name = ref('');
-const nameRef = ref();
+const name = ref("")
+const nameRef = ref()
 
-const hasName = computed(() => name.value !== '');
+const hasName = computed(() => name.value !== "")
 
 onMounted(() => {
   if (nameRef.value) {
-    nameRef.value.focus();
+    nameRef.value.focus()
   }
-});
+})
 
 const setName = () => {
   if (name.value) {
-    localStorage.setItem('user', name.value);
-    const store = useUserStore();
-    store.setName(name.value);
+    localStorage.setItem("user", name.value)
+    const store = useUserStore()
+    store.setName(name.value)
     // @ts-ignore
-    close();
+    close()
   }
-};
+}
 </script>
 <template>
   <Modal>
-    <div class="w-[422px] h-[260px] rounded-[20px] bg-white relative flex flex-col justify-center items-center">
+    <div
+      class="w-[90%] lg:w-[422px] h-[260px] rounded-[20px] bg-white relative flex flex-col justify-center items-center"
+    >
       <div class="modal-close-btn absolute top-0 right-0" @click="close">
         <span class="icon-close"></span>
       </div>
@@ -46,7 +48,7 @@ const setName = () => {
         :class="[
           hasName
             ? 'bg-gradient-to-r from-[#ef7ca4] to-[#f48b8b] to-[103%] text-white cursor-pointer'
-            : 'bg-[#8E8E8E] text-[#D0D0D0] cursor-not-allowed'
+            : 'bg-[#8E8E8E] text-[#D0D0D0] cursor-not-allowed',
         ]"
         @click="setName"
       >

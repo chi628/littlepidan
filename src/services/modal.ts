@@ -27,7 +27,7 @@ export const UserNameModal = () => {
 
 export const ConfirmModal = (content: string) => {
   openModal(() => import("@/components/modal/confirm.vue"), {
-    content
+    content,
   })
 }
 
@@ -37,4 +37,10 @@ export const scoreModal = () => {
 
 export const commentModal = (payload: { id: string; url: string }) => {
   openModal(() => import("@/components/modal/comment.vue"), payload)
+}
+
+export const imageModal = (url: string) => {
+  openModal(() => import("@/components/modal/imageModal.vue"), {
+    url,
+  })
 }
