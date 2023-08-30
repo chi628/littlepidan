@@ -42,36 +42,25 @@ const leftStart = computed(() => {
 const rightEnd = computed(() => currentPage.value * showLimit.value);
 
 const leftImgs = computed(() => {
-  if (isMobile.value) {
-    if (currentPage.value === 1) {
+  const start = isMobile.value ? leftStart.value - 4 : leftStart.value;
+  const end = isMobile.value ? leftStart.value : leftStart.value + 4;
+
+  if (imgList.value) {
+    if (isMobile.value && currentPage.value === 1) {
       return [];
-    } else {
-      return (
-        imgList.value &&
-        imgList.value.slice(leftStart.value - 4, leftStart.value)
-      );
     }
-  } else {
-    return (
-      imgList.value && imgList.value.slice(leftStart.value, leftStart.value + 4)
-    );
+    return imgList.value.slice(start, end);
   }
+  return [];
 });
 
 const rightImgs = computed(() => {
-  if (isMobile.value) {
-    return (
-      imgList.value && imgList.value.slice(rightEnd.value - 4, rightEnd.value)
-    );
-  } else {
-    return (
-      imgList.value && imgList.value.slice(rightEnd.value - 4, rightEnd.value)
-    );
-  }
+  return (
+    imgList.value && imgList.value.slice(rightEnd.value - 4, rightEnd.value)
+  );
 });
 
 const canNextPage = computed(() => {
-  console.log("totalPage", currentPage.value, totalpage.value);
   return currentPage.value < totalpage.value || !!pageToken.value;
 });
 
@@ -96,18 +85,21 @@ const fetchImgList = async () => {
   isFetching.value = true;
 
   const FETCH_LIMIT = isMobile.value ? 8 : 16;
-
-  const res = await GetImgList({
-    limit: 8,
+  GetImgList({
+    limit: FETCH_LIMIT,
     nextToken: pageToken.value,
+  }).then((res) => {
+    pageToken.value = res.nextToken;
+    imgList.value = [...imgList.value, ...res.imgList];
+
+    isFetching.value = !!!pageToken.value;
   });
-
-  pageToken.value = res.nextToken;
-  imgList.value = [...imgList.value, ...res.imgList];
-
-  console.log("1", !!pageToken.value);
-  isFetching.value = !!!pageToken.value;
 };
+
+const leftPage = ref();
+const rightPage = ref();
+const showNextSkeleton = ref(false);
+const showPreSkeleton = ref(false);
 
 const nextPage = () => {
   currentPage.value += 1;
@@ -142,7 +134,114 @@ const prePage = () => {
           />
         </div>
       </template>
-      <template #leftImgs>
+      <template #album>
+        <div
+          ref="album"
+          class="w-full lg:w-[65.5%] h-full lg:h-[65.5%] absolute left-0 lg:left-[16.5%] top-0 lg:top-[16.5%]"
+        >
+          <div class="absolute w-full h-full top-0 left-0 perspective">
+            <div
+              class="absolute top-[1.5%] lg:top-0 left-[5%] lg:left-0 w-[45%] lg:w-1/2 h-[97%] lg:h-full bg-white origin-left transition-transform duration-500 backface-visibility"
+            >
+              <div
+                ref="leftPage"
+                class="absolute top-0 left-0 w-full h-full bg-transparent origin-right transition-transform duration-300 z-[3] shadow-md p-[5%] space-y-1"
+              >
+                <div class="w-full h-[5%]"></div>
+                <div
+                  class="w-full h-[90%] grid grid-cols-2 gap-2 items-center justify-items-center"
+                >
+                  <div
+                    :class="{ 'w-full h-full skeleton': showPreSkeleton }"
+                  ></div>
+                  <div
+                    :class="{ 'w-full h-full skeleton': showPreSkeleton }"
+                  ></div>
+                  <div
+                    :class="{ 'w-full h-full skeleton': showPreSkeleton }"
+                  ></div>
+                  <div
+                    :class="{ 'w-full h-full skeleton': showPreSkeleton }"
+                  ></div>
+                </div>
+
+                <div class="w-full h-[5%]"></div>
+              </div>
+              <div class="w-full h-full p-[5%] relative space-y-1">
+                <p
+                  class="text-[#c15262] text-xs inline-flex justify-around items-center w-full h-[5%]"
+                >
+                  歐小蛋成長日記
+                  <span
+                    class="inline-block w-[65%] border border-dashed border-[#333] pl-4"
+                  ></span>
+                </p>
+                <div
+                  class="w-full h-[90%] grid grid-cols-2 gap-2 justify-items-center"
+                >
+                  <PolaroidImg
+                    v-for="img in leftImgs"
+                    :key="img.id"
+                    :url="img.url"
+                    class="min-h-[42vw] max-h-[42vw] lg:min-h-[15vw] lg:max-h-[15vw]"
+                  />
+                </div>
+                <div class="w-full h-[5%]"></div>
+              </div>
+            </div>
+            <div class="absolute w-1/2 h-full top-0 right-0 bg-white">
+              <div
+                ref="rightPage"
+                class="absolute top-0 right-0 w-full h-full bg-transparent origin-left transition-transform duration-500 border border-solid z-[2] p-[5%]"
+              >
+                <div class="w-full h-[5%]"></div>
+                <div
+                  class="w-full h-[90%] grid grid-cols-2 gap-2 items-center justify-items-center"
+                >
+                  <div
+                    :class="{ 'w-full h-full skeleton': showNextSkeleton }"
+                  ></div>
+                  <div
+                    :class="{ 'w-full h-full skeleton': showNextSkeleton }"
+                  ></div>
+                  <div
+                    :class="{ 'w-full h-full skeleton': showNextSkeleton }"
+                  ></div>
+                  <div
+                    :class="{ 'w-full h-full skeleton': showNextSkeleton }"
+                  ></div>
+                </div>
+
+                <div class="w-full h-[5%]"></div>
+              </div>
+              <div class="w-full h-full p-[5%] space-y-1">
+                <div class="w-full h-[5%]"></div>
+                <div
+                  class="w-full h-[90%] grid grid-cols-2 gap-2 justify-items-center"
+                >
+                  <!-- <slot name="rightImgs"></slot> -->
+                  <PolaroidImg
+                    v-for="img in rightImgs"
+                    :key="img.id"
+                    :url="img.url"
+                    class="min-h-[42vw] max-h-[42vw] lg:min-h-[15vw] lg:max-h-[15vw]"
+                  />
+                </div>
+
+                <p
+                  class="text-[#333333] text-xs inline-flex justify-around items-center w-full h-[5%]"
+                >
+                  <span
+                    class="inline-block w-[65%] border border-dashed border-[#333] pl-4"
+                  ></span>
+                  @little_pidan_0906
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </template>
+      <!-- <template #leftImgs>
         <PolaroidImg
           v-for="img in leftImgs"
           :key="img.id"
@@ -157,7 +256,7 @@ const prePage = () => {
           :url="img.url"
           class="min-h-[42vw] max-h-[42vw] lg:min-h-[15vw] lg:max-h-[15vw]"
         />
-      </template>
+      </template> -->
     </component>
   </div>
 </template>

@@ -16,7 +16,6 @@ const openModal = (modal: any, props?: any) => {
     const mockModal = createApp(c.default, props)
     mockModal.provide(CLOSE_MODAL, close)
     document.body.append(container)
-    console.log("c", c, mockModal)
     mockModal.mount(container)
   })
 }

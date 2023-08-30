@@ -1,35 +1,34 @@
 <script setup lang="ts">
-import { ref, inject, onMounted } from 'vue';
-import Modal from './modal.vue';
-import { MakeComment, GetComment } from '@/services/comment';
-import { CLOSE_MODAL } from '@/services/modal';
+import { ref, inject, onMounted } from 'vue'
+import Modal from './modal.vue'
+import { MakeComment, GetComment } from '@/services/comment'
+import { CLOSE_MODAL } from '@/services/modal'
 
 const props = defineProps({
   id: String,
   url: String
-});
+})
 
-const close = inject(CLOSE_MODAL);
+const close = inject(CLOSE_MODAL)
 
-const value = ref();
+const value = ref()
 
 onMounted(() => {
-  console.log('props', props);
   if (props.id) {
     GetComment(props.id).then((res) => {
-      console.log('a res', res);
-    });
+      console.log('a res', res)
+    })
   }
-});
+})
 
 const comment = () => {
   if (value.value) {
     MakeComment({
       user: 'Miko',
       comment: value.value
-    });
+    })
   }
-};
+}
 </script>
 <template>
   <Modal>

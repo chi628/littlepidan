@@ -1,4 +1,4 @@
-import { computed, onBeforeUnmount, ref, markRaw } from 'vue'
+import { computed, onBeforeUnmount, ref, markRaw,shallowRef } from 'vue'
 import { debounce } from '@/utils/func'
 
 export interface Breakpoints {
@@ -14,8 +14,8 @@ export enum Breakpoint {
 
 export const useLayout = (payload?: { breakpoints: Breakpoints }) => {
   const screenWidth = ref(0)
-  const componentName = ref('div')
-  const componentObj = ref({})
+  const componentName = shallowRef('div')
+  let componentObj = shallowRef({})
   const breakpoints = Object.keys(payload?.breakpoints || [])
     .map((o) => parseInt(o))
     .sort((a, b) => (a > b ? 1 : -1))

@@ -13,32 +13,34 @@ const emit = defineEmits(['prePage', 'nextPage'])
 
 const nextPage = () => {
   if (attrs.canNextPage) {
-    rightPage.value.style.transform = 'rotateY(-180deg)'
-    rightPage.value.style.backgroundColor = 'white'
-    rightPage.value.style.borderColor = 'gray'
-    showNextSkeleton.value = true
-    setTimeout(() => {
-      showNextSkeleton.value = false
-      rightPage.value.style.borderColor = 'transparent'
-      rightPage.value.style.transform = ''
-      rightPage.value.style.backgroundColor = ''
-    }, 500)
+    // rightPage.value.style.transform = 'rotateY(-180deg)'
+    // rightPage.value.style.backgroundColor = 'white'
+    // rightPage.value.style.zIndex = '100'
+    // showNextSkeleton.value = true
+    // setTimeout(() => {
+    //   showNextSkeleton.value = false
+    //   rightPage.value.style.borderColor = 'transparent'
+    //   rightPage.value.style.transform = ''
+    //   rightPage.value.style.backgroundColor = ''
+    //   rightPage.value.style.zIndex = '3'
+    // }, 500)
     emit('nextPage')
   }
 }
 
 const prePage = () => {
   if (attrs.canPrePage) {
-    showPreSkeleton.value = true
-    leftPage.value.style.transform = 'rotateY(-180deg)'
-    leftPage.value.style.backgroundColor = 'white'
-    leftPage.value.style.borderColor = 'gray'
-    setTimeout(() => {
-      showPreSkeleton.value = false
-      leftPage.value.style.borderColor = 'transparent'
-      leftPage.value.style.transform = ''
-      leftPage.value.style.backgroundColor = ''
-    }, 500)
+    // showPreSkeleton.value = true
+    // leftPage.value.style.transform = 'rotateY(-180deg)'
+    // leftPage.value.style.backgroundColor = 'white'
+    // leftPage.value.style.zIndex = '100'
+    // setTimeout(() => {
+    //   showPreSkeleton.value = false
+    //   leftPage.value.style.borderColor = 'transparent'
+    //   leftPage.value.style.transform = ''
+    //   leftPage.value.style.backgroundColor = ''
+    //   leftPage.value.style.zIndex = '3'
+    // }, 500)
     emit('prePage')
   }
 }
@@ -60,16 +62,7 @@ const prePage = () => {
       </div>
     </div>
     <div class="bg-album-pc">
-      <div
-        class="w-[66px] h-[66px] rounded-full absolute top-1/2 -translate-y-1/2 right-[8.5vw] shadow-[3px_3px_20px_0_rgba(0,0,0,0.25)]"
-        :class="[$attrs.canNextPage ? 'btn-enabled ' : 'btn-disabled']"
-        @click="nextPage"
-      >
-        <span
-          class="inline-block w-4 h-4 bd-icon-right-arrow absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-        ></span>
-      </div>
-      <div ref="album" class="w-[65.5%] h-[65.5%] absolute left-[16.5%] top-[16.5%]">
+      <!-- <div ref="album" class="w-[65.5%] h-[65.5%] absolute left-[16.5%] top-[16.5%]">
         <div class="absolute w-full h-full top-0 left-0 perspective">
           <div
             class="absolute top-0 left-0 w-1/2 h-full bg-white origin-left transition-transform duration-500 backface-visibility"
@@ -127,6 +120,16 @@ const prePage = () => {
             </div>
           </div>
         </div>
+      </div> -->
+      <slot name="album"></slot>
+      <div
+        class="w-[66px] h-[66px] rounded-full absolute top-1/2 -translate-y-1/2 right-[8.5vw] shadow-[3px_3px_20px_0_rgba(0,0,0,0.25)]"
+        :class="[$attrs.canNextPage ? 'btn-enabled ' : 'btn-disabled']"
+        @click="nextPage"
+      >
+        <span
+          class="inline-block w-4 h-4 bd-icon-right-arrow absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        ></span>
       </div>
       <div
         class="w-[66px] h-[66px] rounded-full absolute top-1/2 left-[7.5vw] -translate-y-1/2 shadow-[3px_3px_20px_0_rgba(0,0,0,0.25)]"

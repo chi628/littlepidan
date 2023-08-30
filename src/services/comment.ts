@@ -28,7 +28,6 @@ export const GetComment = async (id: string) => {
     const msgList: string[] = []
     let likeCount: number = 0
     res.forEach((doc) => {
-      console.log("doc", doc.data())
       msgList.push(doc.data().msg)
       likeCount += doc.data().likeCount
     })

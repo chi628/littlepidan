@@ -103,11 +103,11 @@ const sendBless = () => {
     </div>
     <div
       v-else
+      data-aos="zoom-in"
       class="w-full lg:w-[85%] mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-y-[50px] relative justify-items-center"
       :class="{ 'min-h-[250px] skeleton': isFetching }"
     >
       <Note
-        data-aos="zoom-in"
         v-for="(bless, index) in blessList"
         :key="`bless-${index}`"
         :userName="bless.name"

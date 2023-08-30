@@ -71,7 +71,7 @@ const list = [
           <img
             v-lazy="FirstOne"
             alt=""
-            class="w-[33vw] max-w-[275px] h-auto absolute -right-[35%] top-20 lg:-right-[220px] lg;-top-[12vw] lg:top-0"
+            class="w-[60vw] max-w-[275px] h-auto absolute -right-[65%] top-10 lg:-right-[220px] lg;-top-[12vw] lg:top-0"
           />
         </div>
 
@@ -79,14 +79,14 @@ const list = [
           <img
             v-lazy="FirstTwo"
             alt=""
-            class="w-[33vw] max-w-[250px] lg:max-w-[300px] h-auto absolute top-[280px] lg:top-[160px] -left-[30%] lg:-left-[280px]"
+            class="w-[45vw] max-w-[250px] lg:max-w-[300px] h-auto absolute top-[280px] lg:top-[160px] -left-[40%] lg:-left-[280px]"
           />
         </div>
         <div data-aos="fade-down-left" data-aos-delay="100">
           <img
             v-lazy="FirstThree"
             alt=""
-            class="w-[40vw] max-w-[300px] lg:max-w-[450px] h-auto absolute top-[420px] lg:top-[200px] -right-[25%] lg:-right-[450px]"
+            class="w-[60vw] max-w-[300px] lg:max-w-[450px] h-auto absolute top-[420px] lg:top-[200px] -right-[45%] lg:-right-[450px]"
           />
         </div>
 
@@ -94,14 +94,14 @@ const list = [
           <img
             v-lazy="FirstFour"
             alt=""
-            class="w-[33vw] max-w-[200px] lg:max-w-[280px] h-auto absolute top-[720px] lg:top-[550px] -right-[30%] lg:-right-[280px]"
+            class="w-[50vw] max-w-[200px] lg:max-w-[280px] h-auto absolute top-[750px] lg:top-[550px] -right-[35%] lg:-right-[280px]"
           />
         </div>
         <div data-aos="fade-up-right" data-aos-delay="300">
           <img
             v-lazy="FirstFive"
             alt=""
-            class="w-[50vw] max-w-[250px] lg:max-w-[478px] h-auto absolute top-[860px] lg:top-[450px] -left-1/4 lg:-left-[400px]"
+            class="w-[55vw] max-w-[250px] lg:max-w-[478px] h-auto absolute top-[860px] lg:top-[450px] -left-[30%] lg:-left-[400px]"
           />
         </div>
 

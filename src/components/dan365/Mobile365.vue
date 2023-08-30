@@ -11,33 +11,34 @@ const showPreSkeleton = ref(false);
 
 const nextPage = () => {
   if (attrs.canNextPage) {
-    console.log("nextPage");
-    rightPage.value.style.transform = "rotateY(-180deg)";
-    rightPage.value.style.backgroundColor = "white";
-    rightPage.value.style.borderColor = "gray";
-    showNextSkeleton.value = true;
-    setTimeout(() => {
-      showNextSkeleton.value = false;
-      rightPage.value.style.borderColor = "transparent";
-      rightPage.value.style.transform = "";
-      rightPage.value.style.backgroundColor = "";
-    }, 500);
+    // rightPage.value.style.transform = 'rotateY(-180deg)'
+    // rightPage.value.style.backgroundColor = 'white'
+    // rightPage.value.style.zIndex = '100'
+    // showNextSkeleton.value = true
+    // setTimeout(() => {
+    //   showNextSkeleton.value = false
+    //   rightPage.value.style.borderColor = 'transparent'
+    //   rightPage.value.style.transform = ''
+    //   rightPage.value.style.backgroundColor = ''
+    //   rightPage.value.style.zIndex = '3'
+    // }, 500)
     emit("nextPage");
   }
 };
 
 const prePage = () => {
   if (attrs.canPrePage) {
-    leftPage.value.style.transform = "rotateY(-180deg)";
-    leftPage.value.style.backgroundColor = "white";
-    leftPage.value.style.borderColor = "gray";
-    showPreSkeleton.value = true;
-    setTimeout(() => {
-      showPreSkeleton.value = false;
-      leftPage.value.style.borderColor = "transparent";
-      leftPage.value.style.transform = "";
-      leftPage.value.style.backgroundColor = "";
-    }, 500);
+    // leftPage.value.style.transform = 'rotateY(-180deg)'
+    // leftPage.value.style.backgroundColor = 'white'
+    // leftPage.value.style.zIndex = '100'
+    // showPreSkeleton.value = true
+    // setTimeout(() => {
+    //   showPreSkeleton.value = false
+    //   leftPage.value.style.borderColor = 'transparent'
+    //   leftPage.value.style.transform = ''
+    //   leftPage.value.style.backgroundColor = ''
+    //   leftPage.value.style.zIndex = '3'
+    // }, 500)
     emit("prePage");
   }
 };
@@ -62,14 +63,19 @@ const prePage = () => {
       </div>
     </div>
     <div class="bg-album">
+      <slot name="album"></slot>
       <div ref="album" class="w-full h-full relative">
-        <div class="absolute w-full h-full top-0 left-0 perspective">
+        <!-- <div class="absolute w-full h-full top-0 left-0 perspective">
           <div
             class="absolute top-[1.5%] left-[5%] w-[45%] h-[97%] bg-white origin-left transition-transform duration-500 backface-visibility"
           >
             <div
               ref="leftPage"
+<<<<<<< HEAD
               class="absolute top-0 left-0 w-full h-full bg-transparent origin-right transform duration-200 border border-solid z-[3] shadow-md p-[5%]"
+=======
+              class="absolute top-0 left-0 w-full h-full origin-right transform duration-200 border border-solid z-[3] shadow-md p-[5%] bg-transparent"
+>>>>>>> fbd0cc1 (update album)
             >
               <div class="w-full h-[5%]"></div>
               <div
@@ -96,9 +102,13 @@ const prePage = () => {
                 class="text-[#333333] text-xs inline-flex justify-around items-center w-full h-[5%]"
               >
                 歐小蛋成長日記
+<<<<<<< HEAD
                 <span
                   class="inline-block w-[65%] border-[0.5px] border-dashed border-[#333] pl-4"
                 ></span>
+=======
+                <span class="inline-block w-[65%] border-[0.5px] border-dashed border-[#333] pl-4"></span>
+>>>>>>> fbd0cc1 (update album)
               </p>
               <div
                 class="w-full h-[90%] grid grid-cols-2 gap-2 items-center justify-items-center"
@@ -150,7 +160,7 @@ const prePage = () => {
               </p>
             </div>
           </div>
-        </div>
+        </div>-->
       </div>
     </div>
     <div
