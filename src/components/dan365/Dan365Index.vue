@@ -111,7 +111,7 @@ const prePage = () => {
   <div id="my365">
     <component :is="component" v-bind="componentProps" @nextPage="nextPage" @prePage="prePage">
       <template #title>
-        <div class="lg:w-[50vw] xl:w-[40vw] h-auto mx-auto pt-[210px] lg:pt-0">
+        <div class="w-[140vw] -mx-[20vw] lg:w-[50vw] xl:w-[40vw] h-auto lg:mx-auto pt-[50px] lg:pt-0">
           <img v-lazy="Title365" alt="" class="w-full h-auto" />
         </div>
       </template>
@@ -120,7 +120,7 @@ const prePage = () => {
           <img
             v-lazy="egg365Img"
             alt=""
-            class="w-[70%] lg:w-[35vw] h-auto absolute lg:-bottom-[8.4vw] -left-5 lg:left-[5vw]"
+            class="w-[70%] lg:w-[35vw] h-auto lg:absolute lg:-bottom-[8.4vw] lg:left-[5vw]"
           />
         </div>
       </template>
@@ -129,7 +129,7 @@ const prePage = () => {
           v-for="img in leftImgs"
           :key="img.id"
           :url="img.url"
-          class="min-h-[30vw] max-h-[30vw] lg:min-h-[15vw] lg:max-h-[15vw]"
+          class="min-h-[42vw] max-h-[42vw] lg:min-h-[15vw] lg:max-h-[15vw]"
         />
       </template>
       <template #rightImgs>
@@ -137,7 +137,7 @@ const prePage = () => {
           v-for="img in rightImgs"
           :key="img.id"
           :url="img.url"
-          class="min-h-[30vw] max-h-[30vw] lg:min-h-[15vw] lg:max-h-[15vw]"
+          class="min-h-[42vw] max-h-[42vw] lg:min-h-[15vw] lg:max-h-[15vw]"
         />
       </template>
     </component>

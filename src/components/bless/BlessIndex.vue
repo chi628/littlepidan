@@ -51,16 +51,16 @@ const sendBless = () => {
 </script>
 <template>
   <div id="bless" class="w-full bg-[#ffc1ca] pb-20 relative">
-    <div data-aos="fade-up" class="w-[80%] lg:w-[40vw] h-auto mx-auto">
+    <div data-aos="fade-up" class="w-[120vw] -mx-[10vw] lg:w-[40vw] pt-[20vw] lg:pt-0 h-auto lg:mx-auto">
       <img v-lazy="TitleBless" alt="" class="w-full h-auto" />
     </div>
-    <div class="w-[70%] mx-auto flex items-center justify-center space-x-3 mb-[50px] lg:mb-0">
+    <div class="sm:w-[70%] mx-auto flex items-center justify-center lg:space-x-3 mb-[50px] lg:mb-0">
       <div
         data-aos="zoom-in-left"
         v-lazy:background-image="BirthdayCakeImg"
         :class="[isMobile ? 'bg-birthday-cake-m' : 'bg-birthday-cake']"
       ></div>
-      <div class="w-full lg:w-auto flex flex-col justify-center items-center relative">
+      <div class="w-[342px] sm:w-full lg:w-auto flex flex-col justify-center items-center relative">
         <div v-if="!userName()" class="w-full h-[180px] bg-transparent absolute top-0" @click="UserNameModal()"></div>
         <textarea
           class="w-full lg:w-[553px] h-[180px] rounded-[20px] p-5 hover:outline-none active:outline-none focus:outline-none resize-none"
@@ -68,7 +68,7 @@ const sendBless = () => {
           v-model="blessContent"
         />
         <div
-          class="w-[342px] h-[62px] leading-[62px] text-lg text-center rounded-[31px] mt-[30px]"
+          class="w-[342px] sm:w-full lg:w-[342px] h-[62px] leading-[62px] text-lg text-center rounded-[31px] mt-[30px]"
           :class="[
             blessContent
               ? 'text-white bg-gradient-to-r from-[#ef7ca4] to-[#f48b8b] cursor-pointer'
@@ -91,7 +91,7 @@ const sendBless = () => {
     </div>
     <div
       v-else
-      class="w-full lg:w-[85%] mx-auto grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-y-[50px] relative justify-items-center"
+      class="w-full lg:w-[85%] mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-y-[50px] relative justify-items-center"
       :class="{ 'min-h-[250px] skeleton': isFetching }"
     >
       <Note
@@ -107,7 +107,7 @@ const sendBless = () => {
 <style lang="scss">
 .bg-birthday-cake-m {
   @apply bg-no-repeat bg-center bg-contain;
-  @apply w-[60vw] max-w-[450px] h-[54vw] absolute -top-[35vw] -right-[5vw];
+  @apply w-[60vw] max-w-[450px] h-[54vw] absolute -top-[15vw] -right-[5vw];
 }
 .bg-birthday-cake {
   @apply bg-no-repeat bg-center bg-contain;

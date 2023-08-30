@@ -45,7 +45,7 @@ const prePage = () => {
 <template>
   <div class="bg-cloud">
     <slot name="title"></slot>
-    <div class="w-full relative">
+    <div class="w-full absolute bottom-[114vw]">
       <slot name="egg365Img"></slot>
       <div class="absolute w-[75vw] h-[60vw] -right-[10vw] -top-[30px]">
         <div data-aos="fade-down-left" v-lazy:background-image="bgDialogM" class="bg-dialog-m">
@@ -63,7 +63,7 @@ const prePage = () => {
           >
             <div
               ref="leftPage"
-              class="absolute top-0 left-0 w-full h-full bg-transparent origin-right transform duration-200 border border-solid z-[2] shadow-md p-[5%]"
+              class="absolute top-0 left-0 w-full h-full bg-transparent origin-right transform duration-200 border border-solid z-[3] shadow-md p-[5%]"
             >
               <div class="w-full h-[5%]"></div>
               <div class="w-full h-[90%] grid grid-cols-2 gap-2 justify-items-center">
@@ -78,7 +78,7 @@ const prePage = () => {
             <div class="w-full h-full p-[5%] z-[2] relative space-y-1">
               <p class="text-[#333333] text-xs inline-flex justify-around items-center w-full h-[5%]">
                 歐小蛋成長日記
-                <span class="inline-block w-[65%] border border-dashed border-[#333] pl-4"></span>
+                <span class="inline-block w-[65%] border-[0.5px] border-dashed border-[#333] pl-4"></span>
               </p>
               <div class="w-full h-[90%] grid grid-cols-2 gap-2 items-center justify-items-center">
                 <slot name="leftImgs"></slot>
@@ -108,7 +108,7 @@ const prePage = () => {
               </div>
 
               <p class="text-[#333333] text-xs inline-flex justify-around items-center w-full h-[5%]">
-                <span class="inline-block w-[65%] border border-dashed border-[#333] pl-4"></span>
+                <span class="inline-block w-[65%] border-[0.5px] border-dashed border-[#333] pl-4"></span>
                 @little_pidan_0906
               </p>
             </div>
@@ -144,7 +144,8 @@ const prePage = () => {
 .bg-album {
   background-image: url(@/assets/images/album.png);
   @apply bg-no-repeat bg-center bg-contain;
-  @apply absolute top-[158vw] sm:top-[129vw] -left-[30vw] sm:-left-[60vw] w-[110vw] sm:w-[150vw] h-[79vw] sm:h-[108vw];
+  // @apply absolute top-[158vw] sm:top-[129vw] -left-[30vw] sm:-left-[60vw] w-[110vw] sm:w-[150vw] h-[79vw] sm:h-[108vw];
+  @apply w-[150vw] h-[107vw] absolute -left-[50vw] bottom-[8vw];
 }
 .bg-dialog-m {
   @apply bg-no-repeat bg-center bg-contain;

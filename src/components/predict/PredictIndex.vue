@@ -123,7 +123,7 @@ const isSelectedItem = (item: string) => {
 </script>
 <template>
   <div id="predict" class="w-full h-[235vw] max-h-[1300px] lg:min-h-[896px] lg:h-[62vw] bg-[#fef8e9]">
-    <div data-aos="fade-up" class="w-[80%] lg:w-[40vw] h-auto mx-auto">
+    <div data-aos="fade-up" class="w-[120vw] -mx-[10vw] lg:w-[40vw] h-auto lg:mx-auto">
       <img v-lazy="TitlePredicate" alt="" class="w-full h-auto" />
     </div>
     <div

@@ -49,7 +49,7 @@ const list = [
 </script>
 <template>
   <div id="myFirstTime" class="w-full bg-white py-[90px] lg:py-[110px]">
-    <div data-aos="fade-up" class="xl:w-[40vw] h-auto mx-auto">
+   <div data-aos="fade-up" class="w-[120vw] -mx-[10vw] lg:w-[40vw] h-auto lg:mx-auto">
       <img v-lazy="TitleFirst" alt="" class="w-full h-auto" />
     </div>
     <div class="w-[70%] lg:w-[440px] mx-auto relative">

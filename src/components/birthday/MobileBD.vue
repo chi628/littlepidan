@@ -16,7 +16,7 @@
         </p>
       </div>
       <p data-aos="zoom-in-right" class="text-sm font-normal font-noto-sans-TC absolute top-[265px] left-7">
-        我是歐小蛋<br />我要滿一歲了！
+        我是歐小蛋 我要滿一歲了！
       </p>
     </div>
     <slot name="bgEgg">
