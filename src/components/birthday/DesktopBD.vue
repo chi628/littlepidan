@@ -2,14 +2,16 @@
   <div class="w-full min-h-[460px] h-[32vw] relative pl-[60px] pt-[75px]">
     <div class="w-[475px] h-[150px] relative">
       <div class="w-[111px] h-[111px] rounded-full bg-[#ffefad]"></div>
-      <div class="font-futura absolute left-[38px] top-2">
+      <div data-aos="zoom-in" class="font-futura absolute left-[38px] top-2">
         <p class="text-[35px] leading-[40px]">My</p>
         <p class="text-[70px] leading-[75px] inline-flex justify-center items-end">
           First Birthday
           <span class="inline-block w-4 h-4 rounded-full bg-[#ffb62c]"></span>
         </p>
       </div>
-      <p class="font-light text-[#333333] ml-[44px] font-noto-sans-TC relative top-2">我是歐小蛋，我要滿一歲了！</p>
+      <p data-aos="zoom-in" class="font-light text-[#333333] ml-[44px] font-noto-sans-TC relative top-2">
+        我是歐小蛋，我要滿一歲了！
+      </p>
     </div>
     <div class="ml-[40px] mt-[55px]">
       <slot name="countdown"></slot>

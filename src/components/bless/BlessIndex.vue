@@ -1,19 +1,19 @@
 <script setup lang="ts">
-import { onMounted, ref, computed } from "vue"
-import TitleBless from "@/assets/title/tt-ur-bless.png"
-import BirthdayCakeImg from "@/assets/images/cake.png"
-import Note from "./note.vue"
-import TheLoading from "@/components/TheLoading.vue"
-import { GetBlessList, MakeBless } from "@/services/bless"
-import { ConfirmModal, UserNameModal } from "@/services/modal"
-import { useBlessStore } from "@/stores/bless"
-import { userName } from "@/repo/user"
-import { useLayout } from "@/utils/layout"
+import { onMounted, ref, computed } from 'vue'
+import TitleBless from '@/assets/title/tt-ur-bless.png'
+import BirthdayCakeImg from '@/assets/images/cake.png'
+import Note from './note.vue'
+import TheLoading from '@/components/TheLoading.vue'
+import { GetBlessList, MakeBless } from '@/services/bless'
+import { ConfirmModal, UserNameModal } from '@/services/modal'
+import { useBlessStore } from '@/stores/bless'
+import { userName } from '@/repo/user'
+import { useLayout } from '@/utils/layout'
 
 const store = useBlessStore()
 const { isMobile } = useLayout()
 
-const blessContent = ref("")
+const blessContent = ref('')
 const isFetching = ref(false)
 const isLoading = ref(false)
 
@@ -43,32 +43,25 @@ const sendBless = () => {
       comment: blessContent.value,
     }).then(() => {
       isLoading.value = false
-      blessContent.value = ""
-      ConfirmModal("蛋蛋收到嚕")
+      blessContent.value = ''
+      ConfirmModal('蛋蛋收到嚕')
     })
   }
 }
 </script>
 <template>
   <div id="bless" class="w-full bg-[#ffc1ca] pb-20 relative">
-    <div class="w-[80%] lg:w-[40vw] h-auto mx-auto">
+    <div data-aos="fade-up" class="w-[80%] lg:w-[40vw] h-auto mx-auto">
       <img v-lazy="TitleBless" alt="" class="w-full h-auto" />
     </div>
-    <div
-      class="w-[70%] mx-auto flex items-center justify-center space-x-3 mb-[50px] lg:mb-0"
-    >
+    <div class="w-[70%] mx-auto flex items-center justify-center space-x-3 mb-[50px] lg:mb-0">
       <div
+        data-aos="zoom-in-left"
         v-lazy:background-image="BirthdayCakeImg"
         :class="[isMobile ? 'bg-birthday-cake-m' : 'bg-birthday-cake']"
       ></div>
-      <div
-        class="w-full lg:w-auto flex flex-col justify-center items-center relative"
-      >
-        <div
-          v-if="!userName()"
-          class="w-full h-[180px] bg-transparent absolute top-0"
-          @click="UserNameModal()"
-        ></div>
+      <div class="w-full lg:w-auto flex flex-col justify-center items-center relative">
+        <div v-if="!userName()" class="w-full h-[180px] bg-transparent absolute top-0" @click="UserNameModal()"></div>
         <textarea
           class="w-full lg:w-[553px] h-[180px] rounded-[20px] p-5 hover:outline-none active:outline-none focus:outline-none resize-none"
           placeholder="撰寫祝福⋯⋯"
@@ -85,8 +78,7 @@ const sendBless = () => {
         >
           <TheLoading v-if="isLoading" />
           <p v-else class="inline-flex justify-center items-center">
-            <span class="icon-send-heart inline-flex w-6 h-6 pr-2"></span
-            >傳送祝福
+            <span class="icon-send-heart inline-flex w-6 h-6 pr-2"></span>傳送祝福
           </p>
         </div>
       </div>
@@ -103,6 +95,7 @@ const sendBless = () => {
       :class="{ 'min-h-[250px] skeleton': isFetching }"
     >
       <Note
+        data-aos="zoom-in"
         v-for="(bless, index) in blessList"
         :key="`bless-${index}`"
         :userName="bless.name"

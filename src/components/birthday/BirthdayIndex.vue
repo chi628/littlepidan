@@ -1,16 +1,16 @@
 <script lang="ts" setup>
-import { computed } from 'vue';
-import bgEgg from '@/assets/bgImg/egg-kv.png';
-import DesktopBD from './DesktopBD.vue';
-import MobileBD from './MobileBD.vue';
-import CountDown from './CountDown.vue';
-import { useLayout } from '@/utils/layout';
+import { computed } from 'vue'
+import bgEgg from '@/assets/bgImg/egg-kv.png'
+import DesktopBD from './DesktopBD.vue'
+import MobileBD from './MobileBD.vue'
+import CountDown from './CountDown.vue'
+import { useLayout } from '@/utils/layout'
 
-const { isMobile } = useLayout();
+const { isMobile } = useLayout()
 
 const component = computed(() => {
-  return isMobile.value ? MobileBD : DesktopBD;
-});
+  return isMobile.value ? MobileBD : DesktopBD
+})
 </script>
 <template>
   <div id="myBirthDay">
@@ -19,7 +19,7 @@ const component = computed(() => {
         <CountDown />
       </template>
       <template #bgEgg>
-        <div v-lazy:background-image="bgEgg" class="bg-egg"></div>
+        <div data-aos="zoom-in" data-aos-delay="50" v-lazy:background-image="bgEgg" class="bg-egg"></div>
       </template>
     </component>
   </div>

@@ -7,7 +7,7 @@
     <div class="w-[90vw] absolute top-[150px]">
       <div class="bg-ellipse"></div>
       <div class="w-[20vw] h-[20vw] rounded-full bg-white absolute top-[80px] left-2"></div>
-      <div class="font-[futura] absolute top-[90px] left-7 leading-[64px] text-[#333333]">
+      <div data-aos="zoom-in-right" class="font-[futura] absolute top-[90px] left-7 leading-[64px] text-[#333333]">
         <p class="text-[32px] leading-[35px]">My</p>
         <p class="text-[64px]">First</p>
         <p class="text-[64px] inline-flex justify-center items-end">
@@ -15,7 +15,9 @@
           <span class="inline-block w-4 h-4 rounded-full bg-[#ffb62d]"></span>
         </p>
       </div>
-      <p class="text-sm font-normal font-noto-sans-TC absolute top-[265px] left-7">我是歐小蛋<br />我要滿一歲了！</p>
+      <p data-aos="zoom-in-right" class="text-sm font-normal font-noto-sans-TC absolute top-[265px] left-7">
+        我是歐小蛋<br />我要滿一歲了！
+      </p>
     </div>
     <slot name="bgEgg">
       <div class="w-[10px] h-[10px] rounded-full bg-white absolute top-[104px] left-2"></div>
@@ -28,6 +30,7 @@
   @apply w-[2/3] h-[80vw];
   background-image: linear-gradient(to bottom, #ffbad0, #ffe7a7);
   filter: blur(50px);
+  transform: translate3d(0, 0, 0);
   opacity: 0.5;
 }
 </style>

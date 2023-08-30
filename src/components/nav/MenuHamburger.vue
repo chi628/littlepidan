@@ -5,7 +5,6 @@ import { FetchMaxZIndex } from '@/utils/findZIndex'
 
 const store = useOpenMenu()
 const style = computed(() => {
-  console.log('style,', FetchMaxZIndex() + 1)
   return {
     zIndex: FetchMaxZIndex() + 1,
   }
@@ -18,15 +17,9 @@ const style = computed(() => {
       @click="store.OpenMenu"
     >
       <div class="space-y-[5px] flex flex-col items-center justify-center">
-        <span
-          class="inline-block w-[25px] h-[3px] bg-[#ef7ca4] rounded-[1.5px]"
-        ></span>
-        <span
-          class="inline-block w-[25px] h-[3px] bg-[#ef7ca4] rounded-[1.5px]"
-        ></span>
-        <span
-          class="inline-block w-[25px] h-[3px] bg-[#ef7ca4] rounded-[1.5px]"
-        ></span>
+        <span class="inline-block w-[25px] h-[3px] bg-[#ef7ca4] rounded-[1.5px]"></span>
+        <span class="inline-block w-[25px] h-[3px] bg-[#ef7ca4] rounded-[1.5px]"></span>
+        <span class="inline-block w-[25px] h-[3px] bg-[#ef7ca4] rounded-[1.5px]"></span>
       </div>
     </div>
   </div>

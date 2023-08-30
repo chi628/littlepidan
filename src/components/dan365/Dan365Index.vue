@@ -1,13 +1,13 @@
 <script lang="ts" setup>
-import { computed, onMounted, ref } from "vue"
-import Desktop365 from "./Desktop365.vue"
-import Mobile365 from "./Mobile365.vue"
-import PolaroidImg from "./polaroidImg.vue"
-import Title365 from "@/assets/title/tt-365.png"
-import Egg365M from "@/assets/bg/365-egg-m.png"
-import Egg365 from "@/assets/bgImg/365-egg.png"
-import { GetImgList } from "@/services/album"
-import { useLayout, Breakpoint } from "@/utils/layout"
+import { computed, onMounted, ref } from 'vue'
+import Desktop365 from './Desktop365.vue'
+import Mobile365 from './Mobile365.vue'
+import PolaroidImg from './polaroidImg.vue'
+import Title365 from '@/assets/title/tt-365.png'
+import Egg365M from '@/assets/bg/365-egg-m.png'
+import Egg365 from '@/assets/bgImg/365-egg.png'
+import { GetImgList } from '@/services/album'
+import { useLayout, Breakpoint } from '@/utils/layout'
 
 const { isMobile, componentObj } = useLayout({
   breakpoints: {
@@ -28,9 +28,7 @@ const egg365Img = computed(() => {
 const component = computed(() => componentObj.value)
 
 const showLimit = computed(() => (isMobile.value ? 4 : 8))
-const totalpage = computed(() =>
-  Math.ceil(imgList.value.length / showLimit.value)
-)
+const totalpage = computed(() => Math.ceil(imgList.value.length / showLimit.value))
 
 const leftStart = computed(() => {
   if (currentPage.value === 1) {
@@ -46,32 +44,23 @@ const leftImgs = computed(() => {
     if (currentPage.value === 1) {
       return []
     } else {
-      return (
-        imgList.value &&
-        imgList.value.slice(leftStart.value - 4, leftStart.value)
-      )
+      return imgList.value && imgList.value.slice(leftStart.value - 4, leftStart.value)
     }
   } else {
-    return (
-      imgList.value && imgList.value.slice(leftStart.value, leftStart.value + 4)
-    )
+    return imgList.value && imgList.value.slice(leftStart.value, leftStart.value + 4)
   }
 })
 
 const rightImgs = computed(() => {
   if (isMobile.value) {
-    return (
-      imgList.value && imgList.value.slice(rightEnd.value - 4, rightEnd.value)
-    )
+    return imgList.value && imgList.value.slice(rightEnd.value - 4, rightEnd.value)
   } else {
-    return (
-      imgList.value && imgList.value.slice(rightEnd.value - 4, rightEnd.value)
-    )
+    return imgList.value && imgList.value.slice(rightEnd.value - 4, rightEnd.value)
   }
 })
 
 const canNextPage = computed(() => {
-  console.log("totalPage", currentPage.value, totalpage.value)
+  console.log('totalPage', currentPage.value, totalpage.value)
   return currentPage.value < totalpage.value || !!pageToken.value
 })
 
@@ -105,7 +94,7 @@ const fetchImgList = async () => {
   pageToken.value = res.nextToken
   imgList.value = [...imgList.value, ...res.imgList]
 
-  console.log("1", !!pageToken.value)
+  console.log('1', !!pageToken.value)
   isFetching.value = !!!pageToken.value
 }
 
@@ -120,23 +109,20 @@ const prePage = () => {
 </script>
 <template>
   <div id="my365">
-    <component
-      :is="component"
-      v-bind="componentProps"
-      @nextPage="nextPage"
-      @prePage="prePage"
-    >
+    <component :is="component" v-bind="componentProps" @nextPage="nextPage" @prePage="prePage">
       <template #title>
         <div class="lg:w-[50vw] xl:w-[40vw] h-auto mx-auto pt-[210px] lg:pt-0">
           <img v-lazy="Title365" alt="" class="w-full h-auto" />
         </div>
       </template>
       <template #egg365Img>
-        <img
-          v-lazy="egg365Img"
-          alt=""
-          class="w-[70%] lg:w-[35vw] h-auto absolute lg:-bottom-[8.4vw] -left-5 lg:left-[5vw]"
-        />
+        <div data-aos="fade-up-right">
+          <img
+            v-lazy="egg365Img"
+            alt=""
+            class="w-[70%] lg:w-[35vw] h-auto absolute lg:-bottom-[8.4vw] -left-5 lg:left-[5vw]"
+          />
+        </div>
       </template>
       <template #leftImgs>
         <PolaroidImg

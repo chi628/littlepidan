@@ -1,64 +1,60 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, watchEffect } from "vue"
-import TitlePredicate from "@/assets/title/tt-predict.png"
-import PickItem from "./PickItem.vue"
-import TheLoading from "@/components/TheLoading.vue"
-import {
-  MakePredicate,
-  GetAllPredicate,
-  GetMyPredicate,
-} from "@/services/predicate"
-import { ConfirmModal, UserNameModal, scoreModal } from "@/services/modal"
-import { userName } from "@/repo/user"
+import { ref, computed, onMounted, watchEffect } from 'vue'
+import TitlePredicate from '@/assets/title/tt-predict.png'
+import PickItem from './PickItem.vue'
+import TheLoading from '@/components/TheLoading.vue'
+import { MakePredicate, GetAllPredicate, GetMyPredicate } from '@/services/predicate'
+import { ConfirmModal, UserNameModal, scoreModal } from '@/services/modal'
+import { userName } from '@/repo/user'
 
 const list = [
   {
-    icon: "gold",
-    name: "金元寶",
+    icon: 'gold',
+    name: '金元寶',
   },
   {
-    icon: "stamp",
-    name: "印章",
+    icon: 'stamp',
+    name: '印章',
   },
   {
-    icon: "car",
-    name: "車",
+    icon: 'car',
+    name: '車',
   },
   {
-    icon: "doctor",
-    name: "聽診器",
+    icon: 'doctor',
+    name: '聽診器',
   },
   {
-    icon: "hammer",
-    name: "槌子",
+    icon: 'hammer',
+    name: '槌子',
   },
   {
-    icon: "math",
-    name: "珠算",
+    icon: 'math',
+    name: '珠算',
   },
   {
-    icon: "book",
-    name: "書",
+    icon: 'book',
+    name: '書',
   },
   {
-    icon: "spoon",
-    name: "湯匙",
+    icon: 'spoon',
+    name: '湯匙',
   },
   {
-    icon: "pen",
-    name: "筆",
+    icon: 'pen',
+    name: '筆',
   },
   {
-    icon: "telescope",
-    name: "望遠鏡",
+    icon: 'telescope',
+    name: '望遠鏡',
   },
   {
-    icon: "camera",
-    name: "相機",
+    icon: 'camera',
+    name: '相機',
   },
   {
-    icon: "music",
-    name: "樂器",
+    icon: 'music',
+    name: '樂器',
   },
 ]
 
@@ -89,7 +85,7 @@ const sendPredicate = () => {
     MakePredicate(selectedItem.value).then(() => {
       GetAllPredicate()
       isLoading.value = false
-      ConfirmModal("投票成功")
+      ConfirmModal('投票成功')
     })
   }
 }
@@ -126,17 +122,15 @@ const isSelectedItem = (item: string) => {
 }
 </script>
 <template>
-  <div
-    id="predict"
-    class="w-full h-[235vw] max-h-[1300px] lg:h-[62vw] bg-[#fef8e9]"
-  >
-    <div class="w-[80%] lg:w-[40vw] h-auto mx-auto">
+  <div id="predict" class="w-full h-[235vw] max-h-[1300px] lg:min-h-[896px] lg:h-[62vw] bg-[#fef8e9]">
+    <div data-aos="fade-up" class="w-[80%] lg:w-[40vw] h-auto mx-auto">
       <img v-lazy="TitlePredicate" alt="" class="w-full h-auto" />
     </div>
     <div
       class="w-[90%] lg:w-[60vw] mx-auto h-auto grid grid-cols-4 justify-items-center lg:grid-cols-6 gap-4 lg:gap-[60px] relative"
     >
       <PickItem
+        data-aos="zoom-in"
         v-for="(item, index) in list"
         :key="`predict-${index}`"
         :icon="item.icon"
@@ -146,9 +140,7 @@ const isSelectedItem = (item: string) => {
         @click="addItems(item.icon)"
       />
     </div>
-    <div
-      class="space-y-4 lg:space-y-[25px] flex flex-col justify-center items-center pt-10 lg:pt-[60px]"
-    >
+    <div class="space-y-4 lg:space-y-[25px] flex flex-col justify-center items-center pt-10 lg:pt-[60px]">
       <div
         class="w-[342px] h-[62px] leading-[62px] text-lg text-center rounded-[31px]"
         :class="[
