@@ -1,18 +1,18 @@
-import './assets/main.scss'
-import './assets/tailwind.css'
-import './assets/icon.scss'
+import "./assets/main.scss";
+import "./assets/tailwind.css";
+import "./assets/icon.scss";
 
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
-import App from './App.vue'
-import VueLazyLoad from 'vue3-lazyload'
+import { createApp } from "vue";
+import { createPinia } from "pinia";
+import App from "./App.vue";
+import VueLazyLoad from "vue3-lazyload";
 //  @ts-ignore
-import AOS from 'aos'
-import 'aos/dist/aos.css'
+import AOS from "aos";
+import "aos/dist/aos.css";
 
-const app = createApp(App)
+const app = createApp(App);
 
-app.use(createPinia())
-app.use(VueLazyLoad, {})
-app.mount("#app")
-AOS.init()
+app.use(createPinia());
+app.use(VueLazyLoad, {});
+app.mount("#app");
+AOS.init();
