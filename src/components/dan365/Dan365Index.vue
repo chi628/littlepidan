@@ -1,114 +1,134 @@
 <script lang="ts" setup>
-import { computed, onMounted, ref } from "vue";
-import Desktop365 from "./Desktop365.vue";
-import Mobile365 from "./Mobile365.vue";
-import PolaroidImg from "./polaroidImg.vue";
-import Title365 from "@/assets/title/tt-365.png";
-import Egg365M from "@/assets/bg/365-egg-m.png";
-import Egg365 from "@/assets/bgImg/365-egg.png";
-import { GetImgList } from "@/services/album";
-import { useLayout, Breakpoint } from "@/utils/layout";
+import { computed, onMounted, ref } from "vue"
+import Desktop365 from "./Desktop365.vue"
+import Mobile365 from "./Mobile365.vue"
+import PolaroidImg from "./polaroidImg.vue"
+import Title365 from "@/assets/title/tt-365.png"
+import { GetImgList } from "@/services/album"
+import { useLayout, Breakpoint } from "@/utils/layout"
 
 const { isMobile, componentObj } = useLayout({
   breakpoints: {
     [Breakpoint.DEAFULT]: Mobile365,
     [Breakpoint.TABLET]: Desktop365,
   },
-});
+})
 
-const isFetching = ref(false);
-const imgList = ref<{ id: string; url: string }[]>([]);
-const pageToken = ref();
-const currentPage = ref(1);
+const isFetching = ref(false)
+const imgList = ref<{ id: string; url: string }[]>([])
+const pageToken = ref()
+const currentPage = ref(1)
 
-const egg365Img = computed(() => {
-  return isMobile.value ? Egg365M : Egg365;
-});
+const component = computed(() => componentObj.value)
 
-const component = computed(() => componentObj.value);
-
-const showLimit = computed(() => (isMobile.value ? 4 : 8));
+const showLimit = computed(() => (isMobile.value ? 4 : 8))
 const totalpage = computed(() =>
   Math.ceil(imgList.value.length / showLimit.value)
-);
+)
 
 const leftStart = computed(() => {
   if (currentPage.value === 1) {
-    return 0;
+    return 0
   }
-  return (currentPage.value - 1) * showLimit.value;
-});
+  return (currentPage.value - 1) * showLimit.value
+})
 
-const rightEnd = computed(() => currentPage.value * showLimit.value);
+const rightEnd = computed(() => currentPage.value * showLimit.value)
 
 const leftImgs = computed(() => {
-  const start = isMobile.value ? leftStart.value - 4 : leftStart.value;
-  const end = isMobile.value ? leftStart.value : leftStart.value + 4;
+  const start = isMobile.value ? leftStart.value - 4 : leftStart.value
+  const end = isMobile.value ? leftStart.value : leftStart.value + 4
 
   if (imgList.value) {
     if (isMobile.value && currentPage.value === 1) {
-      return [];
+      return []
     }
-    return imgList.value.slice(start, end);
+    return imgList.value.slice(start, end)
   }
-  return [];
-});
+  return []
+})
 
 const rightImgs = computed(() => {
   return (
     imgList.value && imgList.value.slice(rightEnd.value - 4, rightEnd.value)
-  );
-});
+  )
+})
 
 const canNextPage = computed(() => {
-  return currentPage.value < totalpage.value || !!pageToken.value;
-});
+  return currentPage.value < totalpage.value || !!pageToken.value
+})
 
-const canPrePage = computed(() => currentPage.value > 1);
+const canPrePage = computed(() => currentPage.value > 1)
 
 const componentProps = computed(() => {
   return {
     imgList: imgList.value,
     canNextPage: canNextPage.value,
     canPrePage: canPrePage.value,
-  };
-});
+  }
+})
 
 onMounted(() => {
-  fetchImgList();
-});
+  fetchImgList()
+})
 
 const fetchImgList = async () => {
   if (isFetching.value) {
-    return;
+    return
   }
-  isFetching.value = true;
+  isFetching.value = true
 
-  const FETCH_LIMIT = isMobile.value ? 8 : 16;
+  const FETCH_LIMIT = isMobile.value ? 8 : 16
   GetImgList({
     limit: FETCH_LIMIT,
     nextToken: pageToken.value,
   }).then((res) => {
-    pageToken.value = res.nextToken;
-    imgList.value = [...imgList.value, ...res.imgList];
+    pageToken.value = res.nextToken
+    imgList.value = [...imgList.value, ...res.imgList]
 
-    isFetching.value = !!!pageToken.value;
-  });
-};
+    isFetching.value = !!!pageToken.value
+  })
+}
 
-const leftPage = ref();
-const rightPage = ref();
-const showNextSkeleton = ref(false);
-const showPreSkeleton = ref(false);
+const leftPage = ref()
+const rightPage = ref()
+const showNextSkeleton = ref(false)
+const showPreSkeleton = ref(false)
 
 const nextPage = () => {
-  currentPage.value += 1;
-  fetchImgList();
-};
+  if (canNextPage.value) {
+    rightPage.value.style.transform = "rotateY(-180deg)"
+    rightPage.value.style.backgroundColor = "white"
+    rightPage.value.style.zIndex = "100"
+    showNextSkeleton.value = true
+    currentPage.value += 1
+    setTimeout(() => {
+      showNextSkeleton.value = false
+      rightPage.value.style.borderColor = "transparent"
+      rightPage.value.style.transform = ""
+      rightPage.value.style.backgroundColor = ""
+      rightPage.value.style.zIndex = "3"
+    }, 500)
+    fetchImgList()
+  }
+}
 
 const prePage = () => {
-  currentPage.value -= 1;
-};
+  if (canPrePage.value) {
+    leftPage.value.style.transform = "rotateY(-180deg)"
+    leftPage.value.style.backgroundColor = "white"
+    leftPage.value.style.zIndex = "100"
+    showPreSkeleton.value = true
+    setTimeout(() => {
+      currentPage.value -= 1
+      showPreSkeleton.value = false
+      leftPage.value.style.borderColor = "transparent"
+      leftPage.value.style.transform = ""
+      leftPage.value.style.backgroundColor = ""
+      leftPage.value.style.zIndex = "3"
+    }, 500)
+  }
+}
 </script>
 <template>
   <div id="my365">
@@ -125,15 +145,6 @@ const prePage = () => {
           <img v-lazy="Title365" alt="" class="w-full h-auto" />
         </div>
       </template>
-      <template #egg365Img>
-        <div data-aos="fade-up-right">
-          <img
-            v-lazy="egg365Img"
-            alt=""
-            class="w-[70%] lg:w-[35vw] h-auto lg:absolute lg:-bottom-[8.4vw] lg:left-[5vw]"
-          />
-        </div>
-      </template>
       <template #album>
         <div
           ref="album"
@@ -141,7 +152,7 @@ const prePage = () => {
         >
           <div class="absolute w-full h-full top-0 left-0 perspective">
             <div
-              class="absolute top-[1.5%] lg:top-0 left-[5%] lg:left-0 w-[45%] lg:w-1/2 h-[97%] lg:h-full bg-white origin-left transition-transform duration-500 backface-visibility"
+              class="absolute top-[1.5%] lg:top-0 left-[5%] lg:left-0 w-[45%] lg:w-1/2 h-[97%] lg:h-full bg-white backface-visibility"
             >
               <div
                 ref="leftPage"
@@ -173,7 +184,7 @@ const prePage = () => {
                 >
                   歐小蛋成長日記
                   <span
-                    class="inline-block w-[65%] border border-dashed border-[#333] pl-4"
+                    class="inline-block w-[50%] lg:w-[65%] border-[0.5px] border-dashed border-[#c15262] pl-4"
                   ></span>
                 </p>
                 <div
@@ -189,10 +200,12 @@ const prePage = () => {
                 <div class="w-full h-[5%]"></div>
               </div>
             </div>
-            <div class="absolute w-1/2 h-full top-0 right-0 bg-white">
+            <div
+              class="absolute w-[45%] h-[97%] lg:w-1/2 lg:h-full top-[1.5%] lg:top-0 right-[5%] lg:right-0 bg-white"
+            >
               <div
                 ref="rightPage"
-                class="absolute top-0 right-0 w-full h-full bg-transparent origin-left transition-transform duration-500 border border-solid z-[2] p-[5%]"
+                class="absolute top-0 right-0 w-full h-full bg-transparent origin-left transition-transform duration-300 border border-solid z-[2] p-[5%]"
               >
                 <div class="w-full h-[5%]"></div>
                 <div
@@ -219,7 +232,6 @@ const prePage = () => {
                 <div
                   class="w-full h-[90%] grid grid-cols-2 gap-2 justify-items-center"
                 >
-                  <!-- <slot name="rightImgs"></slot> -->
                   <PolaroidImg
                     v-for="img in rightImgs"
                     :key="img.id"
@@ -229,10 +241,10 @@ const prePage = () => {
                 </div>
 
                 <p
-                  class="text-[#333333] text-xs inline-flex justify-around items-center w-full h-[5%]"
+                  class="text-[#c15262] text-xs inline-flex justify-around items-center w-full h-[5%]"
                 >
                   <span
-                    class="inline-block w-[65%] border border-dashed border-[#333] pl-4"
+                    class="inline-block w-[50%] lg:w-[65%] border-[0.5px] border-dashed border-[#c15262] pl-4"
                   ></span>
                   @little_pidan_0906
                 </p>
@@ -241,22 +253,6 @@ const prePage = () => {
           </div>
         </div>
       </template>
-      <!-- <template #leftImgs>
-        <PolaroidImg
-          v-for="img in leftImgs"
-          :key="img.id"
-          :url="img.url"
-          class="min-h-[42vw] max-h-[42vw] lg:min-h-[15vw] lg:max-h-[15vw]"
-        />
-      </template>
-      <template #rightImgs>
-        <PolaroidImg
-          v-for="img in rightImgs"
-          :key="img.id"
-          :url="img.url"
-          class="min-h-[42vw] max-h-[42vw] lg:min-h-[15vw] lg:max-h-[15vw]"
-        />
-      </template> -->
     </component>
   </div>
 </template>

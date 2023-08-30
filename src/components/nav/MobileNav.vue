@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import NavItem from './NavItem.vue'
-import { menu } from './item'
-import { useOpenMenu } from '@/stores/menu'
-import { FetchMaxZIndex } from '@/utils/findZIndex'
-import { computed } from 'vue'
+import NavItem from "./NavItem.vue"
+import { menu } from "./item"
+import { useOpenMenu } from "@/stores/menu"
+import { FetchMaxZIndex } from "@/utils/findZIndex"
+import { computed } from "vue"
 
 const style = computed(() => {
   return {
@@ -27,10 +27,12 @@ const store = useOpenMenu()
         </p>
       </div>
       <div
-        class="w-[50px] h-[50px] rounded-full bg-[#ffb4ca] shadow-[2px_4px_12px_0_rgba(0,0,0,0.2)] cursor-pointer absolute top-4 right-4 flex justify-center items-center"
+        class="w-[50px] h-[50px] rounded-full bg-[#ffb4ca] shadow-[2px_4px_12px_0_rgba(0,0,0,0.2)] cursor-pointer absolute top-4 right-4"
         @click="store.CloseMenu"
       >
-        <span class="inline-block w-5 h-5 icon-close"></span>
+        <span
+          class="inline-block w-6 h-6 icon-close absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2"
+        ></span>
       </div>
       <div class="item-list">
         <NavItem
@@ -83,7 +85,7 @@ const store = useOpenMenu()
 .foot-text > :not(:last-child) {
   position: relative;
   &::after {
-    content: '';
+    content: "";
     width: 100%;
     height: 1px;
     background-color: #ffd0de;

@@ -76,7 +76,7 @@ const items = ref([
   },
 ])
 
-const test = computed(() => {
+const itemList = computed(() => {
   const store = usePredicateStore()
   if (store.itemsList.length) {
     store.itemsList.forEach((o) => {
@@ -88,7 +88,6 @@ const test = computed(() => {
     })
   }
   return items.value
-  // items.value.
 })
 
 onMounted(() => {
@@ -99,7 +98,7 @@ onMounted(() => {
     new Chart(chartDOM, {
       type: "bar",
       data: {
-        labels: test.value.map((o) => o.name),
+        labels: itemList.value.map((o) => o.name),
         datasets: [
           {
             data: items.value.map((item) => item.count),
@@ -126,9 +125,14 @@ onMounted(() => {
       options: {
         indexAxis: isMobile.value ? "y" : "x",
         maintainAspectRatio: false,
+        datasets: {
+          bar: {
+            barThickness: isMobile.value ? 8 : 36,
+          },
+        },
         elements: {
           bar: {
-            borderWidth: 2,
+            borderWidth: 0,
           },
         },
         responsive: true,
