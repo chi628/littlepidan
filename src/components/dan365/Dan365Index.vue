@@ -18,6 +18,11 @@ const isFetching = ref(false)
 const imgList = ref<{ id: string; url: string }[]>([])
 const pageToken = ref()
 const currentPage = ref(1)
+const leftPage = ref()
+const rightPage = ref()
+const showNextSkeleton = ref(false)
+const showPreSkeleton = ref(false)
+const showFakeLeftPage = ref(false)
 
 const component = computed(() => componentObj.value)
 
@@ -90,11 +95,6 @@ const fetchImgList = async () => {
   })
 }
 
-const leftPage = ref()
-const rightPage = ref()
-const showNextSkeleton = ref(false)
-const showPreSkeleton = ref(false)
-
 const nextPage = () => {
   if (canNextPage.value) {
     rightPage.value.style.transform = "rotateY(-180deg)"
@@ -119,6 +119,7 @@ const prePage = () => {
     leftPage.value.style.backgroundColor = "white"
     leftPage.value.style.zIndex = "100"
     showPreSkeleton.value = true
+    showFakeLeftPage.value = true
     setTimeout(() => {
       currentPage.value -= 1
       showPreSkeleton.value = false
@@ -126,6 +127,7 @@ const prePage = () => {
       leftPage.value.style.transform = ""
       leftPage.value.style.backgroundColor = ""
       leftPage.value.style.zIndex = "3"
+      showFakeLeftPage.value = false
     }, 500)
   }
 }
@@ -174,6 +176,22 @@ const prePage = () => {
                   <div
                     :class="{ 'w-full h-full skeleton': showPreSkeleton }"
                   ></div>
+                </div>
+
+                <div class="w-full h-[5%]"></div>
+              </div>
+              <div
+                v-if="showFakeLeftPage"
+                class="absolute top-0 left-0 w-full h-full bg-white origin-right transition-transform duration-300 z-[3] shadow-md p-[5%] space-y-1"
+              >
+                <div class="w-full h-[5%]"></div>
+                <div
+                  class="w-full h-[90%] grid grid-cols-2 gap-2 items-center justify-items-center"
+                >
+                  <div class="w-full h-full skeleton"></div>
+                  <div class="w-full h-full skeleton"></div>
+                  <div class="w-full h-full skeleton"></div>
+                  <div class="w-full h-full skeleton"></div>
                 </div>
 
                 <div class="w-full h-[5%]"></div>
