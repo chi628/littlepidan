@@ -10,7 +10,7 @@ defineProps({
 </script>
 <template>
   <Modal>
-    <div class="w-[90vw] h-[130vw] bg-white rounded-[20px] relative">
+    <div class="w-[90vw] lg:w-[720px] h-[130vw] lg:min-h-[85dvh] lg:max-h-[85dvh] bg-white rounded-[20px] relative">
       <div class="modal-close-btn absolute top-0 right-0" @click="close">
         <span class="icon-close"></span>
       </div>
