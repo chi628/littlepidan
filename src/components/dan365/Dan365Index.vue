@@ -12,8 +12,6 @@ import Title365 from "@/assets/title/tt-365.png"
 import { GetImgList } from "@/services/album"
 import { useLayout, Breakpoint } from "@/utils/layout"
 
-console.log("image", Image365)
-
 const { isMobile, componentObj } = useLayout({
   breakpoints: {
     [Breakpoint.DEAFULT]: Mobile365,
@@ -30,7 +28,6 @@ const rightPage = ref()
 const showNextSkeleton = ref(false)
 const showPreSkeleton = ref(false)
 const showFakeLeftPage = ref(false)
-// const staticImgList = Object.keys(Image365)
 const staticImgList = ref()
 
 const component = computed(() => componentObj.value)
@@ -53,23 +50,16 @@ const leftImgs = computed(() => {
   const start = isMobile.value ? leftStart.value - 4 : leftStart.value
   const end = isMobile.value ? leftStart.value : leftStart.value + 4
 
-  // if (imgList.value) {
-  //   if (isMobile.value && currentPage.value === 1) {
-  //     return []
-  //   }
-  //   return imgList.value.slice(start, end)
-  // }
-  // return []
   if (staticImgList.value) {
+    if (isMobile.value && currentPage.value === 1) {
+      return []
+    }
     return staticImgList.value.slice(start, end)
   }
   return []
 })
 
 const rightImgs = computed(() => {
-  // return (
-  //   imgList.value && imgList.value.slice(rightEnd.value - 4, rightEnd.value)
-  // )
   return (
     staticImgList.value &&
     staticImgList.value.slice(rightEnd.value - 4, rightEnd.value)
@@ -119,6 +109,7 @@ const fetchImgList = async () => {
   })
 }
 
+const nextSkeleton = ref(false)
 const nextPage = () => {
   if (canNextPage.value) {
     rightPage.value.style.transform = "rotateY(-180deg)"
@@ -126,7 +117,9 @@ const nextPage = () => {
     rightPage.value.style.zIndex = "100"
     showNextSkeleton.value = true
     currentPage.value += 1
+    nextSkeleton.value = true
     setTimeout(() => {
+      nextSkeleton.value = false
       showNextSkeleton.value = false
       rightPage.value.style.borderColor = "transparent"
       rightPage.value.style.transform = ""
@@ -279,6 +272,7 @@ const prePage = () => {
                     :key="`right-${index}`"
                     :url="url"
                     class="min-h-[42vw] max-h-[42vw] lg:min-h-[15vw] lg:max-h-[15vw]"
+                    :class="{ skeleton: nextSkeleton }"
                   />
                 </div>
 

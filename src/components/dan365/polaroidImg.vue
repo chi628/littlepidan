@@ -5,8 +5,6 @@ const props = defineProps({
   url: String,
 })
 
-const isLoading = ref(true)
-
 const openImg = () => {
   if (props.url) {
     imageModal(props.url)
