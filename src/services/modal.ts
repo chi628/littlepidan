@@ -6,7 +6,6 @@ const openModal = (modal: any, props?: any) => {
   const container = document.createElement("div")
 
   const close = () => {
-    console.log("close modalll")
     setTimeout(() => {
       container.parentNode!.removeChild(container)
     }, 500)

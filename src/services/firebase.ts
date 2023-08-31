@@ -4,7 +4,6 @@ import { getStorage } from "firebase/storage"
 import { getAnalytics } from "firebase/analytics"
 
 const APPKEY = import.meta.env.VITE_API_KEY
-console.log("key", APPKEY)
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_API_KEY,
   authDomain: import.meta.env.VITE_AUTHDOMAIN,

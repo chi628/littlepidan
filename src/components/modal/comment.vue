@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { ref, inject, onMounted } from 'vue'
-import Modal from './modal.vue'
-import { MakeComment, GetComment } from '@/services/comment'
-import { CLOSE_MODAL } from '@/services/modal'
+import { ref, inject, onMounted } from "vue"
+import Modal from "./modal.vue"
+import { MakeComment, GetComment } from "@/services/comment"
+import { CLOSE_MODAL } from "@/services/modal"
 
 const props = defineProps({
   id: String,
-  url: String
+  url: String,
 })
 
 const close = inject(CLOSE_MODAL)
@@ -15,24 +15,24 @@ const value = ref()
 
 onMounted(() => {
   if (props.id) {
-    GetComment(props.id).then((res) => {
-      console.log('a res', res)
-    })
+    GetComment(props.id).then((res) => {})
   }
 })
 
 const comment = () => {
   if (value.value) {
     MakeComment({
-      user: 'Miko',
-      comment: value.value
+      user: "Miko",
+      comment: value.value,
     })
   }
 }
 </script>
 <template>
   <Modal>
-    <div class="w-[95vw] md:w-[900px] h-[600px] rounded-[20px] bg-white flex items-center justify-center relative">
+    <div
+      class="w-[95vw] md:w-[900px] h-[600px] rounded-[20px] bg-white flex items-center justify-center relative"
+    >
       <div class="modal-close-btn absolute top-0 right-0" @click="close">
         <span class="icon-close"></span>
       </div>
@@ -42,20 +42,32 @@ const comment = () => {
         <img :src="$props.url" alt="" class="w-full h-auto" />
       </div>
       <div class="w-full h-full">
-        <div class="flex items-center space-x-3 h-[95px] border-b border-solid border-[#e6e6e6] mx-[25px]">
+        <div
+          class="flex items-center space-x-3 h-[95px] border-b border-solid border-[#e6e6e6] mx-[25px]"
+        >
           <p class="text-[55px] font-[100] font-ProximaNova">
-            DAY.<span class="font-bold text-[#e762a0] text-[60px]">{{ $props.id }}</span>
+            DAY.<span class="font-bold text-[#e762a0] text-[60px]">{{
+              $props.id
+            }}</span>
           </p>
-          <div class="w-[100px] h-[42px] leading-[42px] text-center text-white bg-[#e6e6e6] rounded-[20px]">喜歡</div>
+          <div
+            class="w-[100px] h-[42px] leading-[42px] text-center text-white bg-[#e6e6e6] rounded-[20px]"
+          >
+            喜歡
+          </div>
         </div>
         <div
           class="h-[50px] bg-white border-b border-solid border-[#e6e6e6] mx-[25px] flex justify-center items-center"
         >
-          <div class="flex items-center justify-center space-x-1.5 w-1/2 cursor-pointer">
+          <div
+            class="flex items-center justify-center space-x-1.5 w-1/2 cursor-pointer"
+          >
             <span class="icon--like"></span>
             <span class="font-light text-[#333]">25</span>
           </div>
-          <div class="flex items-center justify-center space-x-1.5 w-1/2 cursor-pointer">
+          <div
+            class="flex items-center justify-center space-x-1.5 w-1/2 cursor-pointer"
+          >
             <span class="icon--comment"></span>
             <span class="font-light text-[#333]">5</span>
           </div>

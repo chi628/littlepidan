@@ -1,5 +1,5 @@
 <script lang="ts">
-const Image365 = import.meta.glob("/365/*.{jpg,jpeg}", {
+const Image365 = import.meta.glob("@/assets/365/*.{jpg,jpeg}", {
   as: "url",
 })
 </script>
@@ -30,13 +30,14 @@ const rightPage = ref()
 const showNextSkeleton = ref(false)
 const showPreSkeleton = ref(false)
 const showFakeLeftPage = ref(false)
-const staticImgList = Object.keys(Image365)
+// const staticImgList = Object.keys(Image365)
+const staticImgList = ref()
 
 const component = computed(() => componentObj.value)
 
 const showLimit = computed(() => (isMobile.value ? 4 : 8))
 const totalpage = computed(() =>
-  Math.ceil(staticImgList.length / showLimit.value)
+  Math.ceil(staticImgList.value && staticImgList.value.length / showLimit.value)
 )
 
 const leftStart = computed(() => {
@@ -59,14 +60,20 @@ const leftImgs = computed(() => {
   //   return imgList.value.slice(start, end)
   // }
   // return []
-  return staticImgList.slice(start, end)
+  if (staticImgList.value) {
+    return staticImgList.value.slice(start, end)
+  }
+  return []
 })
 
 const rightImgs = computed(() => {
   // return (
   //   imgList.value && imgList.value.slice(rightEnd.value - 4, rightEnd.value)
   // )
-  return staticImgList.slice(rightEnd.value - 4, rightEnd.value)
+  return (
+    staticImgList.value &&
+    staticImgList.value.slice(rightEnd.value - 4, rightEnd.value)
+  )
 })
 
 const canNextPage = computed(() => {
@@ -83,8 +90,15 @@ const componentProps = computed(() => {
   }
 })
 
-onMounted(() => {
-  // fetchImgList()
+onMounted(async () => {
+  const list: string[] = []
+
+  for (const url in Image365) {
+    const res = await Image365[url]()
+    list.push(res)
+  }
+
+  staticImgList.value = list
 })
 
 const fetchImgList = async () => {
