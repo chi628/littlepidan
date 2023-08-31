@@ -1,53 +1,53 @@
 <script setup lang="ts">
-import { onMounted, ref, computed } from "vue";
-import TitleBless from "@/assets/title/tt-ur-bless.png";
-import BirthdayCakeImg from "@/assets/images/cake.png";
-import Note from "./note.vue";
-import TheLoading from "@/components/TheLoading.vue";
-import { GetBlessList, MakeBless } from "@/services/bless";
-import { ConfirmModal, UserNameModal } from "@/services/modal";
-import { useBlessStore } from "@/stores/bless";
-import { userName } from "@/repo/user";
-import { useLayout } from "@/utils/layout";
+import { onMounted, ref, computed } from "vue"
+import TitleBless from "@/assets/title/tt-ur-bless.png"
+import BirthdayCakeImg from "@/assets/images/cake.png"
+import Note from "./note.vue"
+import TheLoading from "@/components/TheLoading.vue"
+import { GetBlessList, MakeBless } from "@/services/bless"
+import { ConfirmModal, UserNameModal } from "@/services/modal"
+import { useBlessStore } from "@/stores/bless"
+import { userName } from "@/repo/user"
+import { useLayout } from "@/utils/layout"
 
-const store = useBlessStore();
-const { isMobile } = useLayout();
+const store = useBlessStore()
+const { isMobile } = useLayout()
 
-const blessContent = ref("");
-const isFetching = ref(false);
-const isLoading = ref(false);
+const blessContent = ref("")
+const isFetching = ref(false)
+const isLoading = ref(false)
 
-const blessList = computed(() => store.blessList);
+const blessList = computed(() => store.blessList)
 
-const noData = computed(() => blessList.value.length === 0);
+const noData = computed(() => blessList.value.length === 0)
 
 onMounted(() => {
-  fetchBlessList();
-});
+  fetchBlessList()
+})
 
 const fetchBlessList = async () => {
   if (isFetching.value) {
-    return;
+    return
   }
-  isFetching.value = true;
-  await GetBlessList();
-  isFetching.value = false;
-};
+  isFetching.value = true
+  await GetBlessList()
+  isFetching.value = false
+}
 
 const sendBless = () => {
   if (blessContent.value) {
-    isLoading.value = true;
+    isLoading.value = true
 
     MakeBless({
       name: userName(),
       comment: blessContent.value,
     }).then(() => {
-      isLoading.value = false;
-      blessContent.value = "";
-      ConfirmModal("蛋蛋收到嚕");
-    });
+      isLoading.value = false
+      blessContent.value = ""
+      ConfirmModal("蛋蛋收到嚕")
+    })
   }
-};
+}
 </script>
 <template>
   <div id="bless" class="w-full bg-[#ffc1ca] pb-20 relative">
@@ -104,7 +104,7 @@ const sendBless = () => {
     <div
       v-else
       data-aos="zoom-in"
-      class="w-full lg:w-[85%] mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-y-[50px] relative justify-items-center"
+      class="w-full lg:w-[85%] mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-y-[50px] relative justify-items-center p-2"
       :class="{ 'min-h-[250px] skeleton': isFetching }"
     >
       <Note

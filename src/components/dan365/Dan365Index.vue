@@ -1,5 +1,5 @@
 <script lang="ts">
-const Image365 = import.meta.glob("@/assets/365/*.{jpg,JPG,jpeg}")
+const Image365 = import.meta.glob("@/assets/365/*.{jpg,jpeg}")
 </script>
 <script lang="ts" setup>
 import { computed, onMounted, ref } from "vue"

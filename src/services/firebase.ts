@@ -1,20 +1,22 @@
 import { initializeApp } from "firebase/app"
 import { getFirestore } from "firebase/firestore"
 import { getStorage } from "firebase/storage"
-import { getAnalytics } from "firebase/analytics";
+import { getAnalytics } from "firebase/analytics"
 
+const APPKEY = import.meta.env.VITE_API_KEY
+console.log("key", APPKEY)
 const firebaseConfig = {
-  apiKey: "AIzaSyDsj0KDqd7e5g2u9vEXeT9Avky-llG3TAQ",
-  authDomain: "danbd-71417.firebaseapp.com",
-  projectId: "danbd-71417",
-  storageBucket: "danbd-71417.appspot.com",
-  messagingSenderId: "746162621702",
-  appId: "1:746162621702:web:72f1c6726b765ae841a287",
-  measurementId: "G-CHHF0QLX6E",
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTHDOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_ID,
+  measurementId: import.meta.env.VITE_MEASUREMENT_ID,
 }
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig)
 export const db = getFirestore(app)
 export const storage = getStorage()
-export const analytics = getAnalytics(app);
+export const analytics = getAnalytics(app)

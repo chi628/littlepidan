@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, watchEffect } from "vue";
-import TitlePredicate from "@/assets/title/tt-predict.png";
-import PickItem from "./PickItem.vue";
-import TheLoading from "@/components/TheLoading.vue";
+import { ref, computed, onMounted, watchEffect } from "vue"
+import TitlePredicate from "@/assets/title/tt-predict.png"
+import PickItem from "./PickItem.vue"
+import TheLoading from "@/components/TheLoading.vue"
 import {
   MakePredicate,
   GetAllPredicate,
   GetMyPredicate,
-} from "@/services/predicate";
-import { ConfirmModal, UserNameModal, scoreModal } from "@/services/modal";
-import { userName } from "@/repo/user";
+} from "@/services/predicate"
+import { ConfirmModal, UserNameModal, scoreModal } from "@/services/modal"
+import { userName } from "@/repo/user"
 
 const list = [
   {
@@ -60,70 +60,70 @@ const list = [
     icon: "music",
     name: "樂器",
   },
-];
+]
 
-const selectedItem = ref<string[]>([]);
-const isLoading = ref(false);
+const selectedItem = ref<string[]>([])
+const isLoading = ref(false)
 
-const myPredicate = computed(() => GetMyPredicate());
-const hasMyPredicate = computed(() => myPredicate.value.length > 0);
+const myPredicate = computed(() => GetMyPredicate())
+const hasMyPredicate = computed(() => myPredicate.value.length > 0)
 
 const canVote = computed(() => {
   if (hasMyPredicate.value) {
-    return false;
+    return false
   }
-  return selectedItem.value.length === 3;
-});
+  return selectedItem.value.length === 3
+})
 
 watchEffect(() => {
-  selectedItem.value = myPredicate.value.map((o) => o.id);
-});
+  selectedItem.value = myPredicate.value.map((o) => o.id)
+})
 
 onMounted(() => {
-  GetAllPredicate();
-});
+  GetAllPredicate()
+})
 
 const sendPredicate = () => {
   if (canVote.value && !isLoading.value) {
-    isLoading.value = true;
+    isLoading.value = true
     MakePredicate(selectedItem.value).then(() => {
-      GetAllPredicate();
-      isLoading.value = false;
-      ConfirmModal("投票成功");
-    });
+      GetAllPredicate()
+      isLoading.value = false
+      ConfirmModal("投票成功")
+    })
   }
-};
+}
 const addItems = (item: string) => {
   if (!hasMyPredicate.value) {
     if (!userName()) {
-      UserNameModal();
+      UserNameModal()
     } else {
-      const index = selectedItem.value.findIndex((o) => o === item);
+      const index = selectedItem.value.findIndex((o) => o === item)
       if (index > -1) {
-        selectedItem.value.splice(index, 1);
+        selectedItem.value.splice(index, 1)
       } else {
-        selectedItem.value.push(item);
+        selectedItem.value.push(item)
       }
     }
   }
-};
+}
 const canSelectItem = (item: string) => {
   if (hasMyPredicate.value) {
-    return false;
+    return false
   }
   if (selectedItem.value.length < 3) {
-    return true;
+    return true
   } else {
     if (selectedItem.value.includes(item)) {
-      return true;
+      return true
     } else {
-      return false;
+      return false
     }
   }
-};
+}
 const isSelectedItem = (item: string) => {
-  return selectedItem.value.includes(item);
-};
+  return selectedItem.value.includes(item)
+}
 </script>
 <template>
   <div
@@ -137,10 +137,10 @@ const isSelectedItem = (item: string) => {
       <img v-lazy="TitlePredicate" alt="" class="w-full h-auto" />
     </div>
     <div
+      data-aos="zoom-in"
       class="w-[90%] lg:w-[60vw] mx-auto h-auto grid grid-cols-4 justify-items-center lg:grid-cols-6 gap-4 lg:gap-[60px] relative"
     >
       <PickItem
-        data-aos="zoom-in"
         v-for="(item, index) in list"
         :key="`predict-${index}`"
         :icon="item.icon"
