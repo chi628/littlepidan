@@ -1,5 +1,7 @@
 <script lang="ts">
-const Image365 = import.meta.glob("/public/365/*.{jpg,jpeg}")
+const Image365 = import.meta.glob("/365/*.{jpg,jpeg}", {
+  as: "url",
+})
 </script>
 <script lang="ts" setup>
 import { computed, onMounted, ref } from "vue"
@@ -9,6 +11,8 @@ import PolaroidImg from "./polaroidImg.vue"
 import Title365 from "@/assets/title/tt-365.png"
 import { GetImgList } from "@/services/album"
 import { useLayout, Breakpoint } from "@/utils/layout"
+
+console.log("image", Image365)
 
 const { isMobile, componentObj } = useLayout({
   breakpoints: {
