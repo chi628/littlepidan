@@ -1,3 +1,6 @@
+<script lang="ts">
+const Image365 = import.meta.glob("@/assets/365/*.{jpg,JPG,jpeg}")
+</script>
 <script lang="ts" setup>
 import { computed, onMounted, ref } from "vue"
 import Desktop365 from "./Desktop365.vue"
@@ -23,12 +26,13 @@ const rightPage = ref()
 const showNextSkeleton = ref(false)
 const showPreSkeleton = ref(false)
 const showFakeLeftPage = ref(false)
+const staticImgList = Object.keys(Image365)
 
 const component = computed(() => componentObj.value)
 
 const showLimit = computed(() => (isMobile.value ? 4 : 8))
 const totalpage = computed(() =>
-  Math.ceil(imgList.value.length / showLimit.value)
+  Math.ceil(staticImgList.length / showLimit.value)
 )
 
 const leftStart = computed(() => {
@@ -44,19 +48,21 @@ const leftImgs = computed(() => {
   const start = isMobile.value ? leftStart.value - 4 : leftStart.value
   const end = isMobile.value ? leftStart.value : leftStart.value + 4
 
-  if (imgList.value) {
-    if (isMobile.value && currentPage.value === 1) {
-      return []
-    }
-    return imgList.value.slice(start, end)
-  }
-  return []
+  // if (imgList.value) {
+  //   if (isMobile.value && currentPage.value === 1) {
+  //     return []
+  //   }
+  //   return imgList.value.slice(start, end)
+  // }
+  // return []
+  return staticImgList.slice(start, end)
 })
 
 const rightImgs = computed(() => {
-  return (
-    imgList.value && imgList.value.slice(rightEnd.value - 4, rightEnd.value)
-  )
+  // return (
+  //   imgList.value && imgList.value.slice(rightEnd.value - 4, rightEnd.value)
+  // )
+  return staticImgList.slice(rightEnd.value - 4, rightEnd.value)
 })
 
 const canNextPage = computed(() => {
@@ -67,14 +73,14 @@ const canPrePage = computed(() => currentPage.value > 1)
 
 const componentProps = computed(() => {
   return {
-    imgList: imgList.value,
+    imgList: staticImgList,
     canNextPage: canNextPage.value,
     canPrePage: canPrePage.value,
   }
 })
 
 onMounted(() => {
-  fetchImgList()
+  // fetchImgList()
 })
 
 const fetchImgList = async () => {
@@ -209,9 +215,9 @@ const prePage = () => {
                   class="w-full h-[90%] grid grid-cols-2 gap-2 justify-items-center"
                 >
                   <PolaroidImg
-                    v-for="img in leftImgs"
-                    :key="img.id"
-                    :url="img.url"
+                    v-for="(url, index) in leftImgs"
+                    :key="`left-${index}`"
+                    :url="url"
                     class="min-h-[42vw] max-h-[42vw] lg:min-h-[15vw] lg:max-h-[15vw]"
                   />
                 </div>
@@ -251,9 +257,9 @@ const prePage = () => {
                   class="w-full h-[90%] grid grid-cols-2 gap-2 justify-items-center"
                 >
                   <PolaroidImg
-                    v-for="img in rightImgs"
-                    :key="img.id"
-                    :url="img.url"
+                    v-for="(url, index) in rightImgs"
+                    :key="`right-${index}`"
+                    :url="url"
                     class="min-h-[42vw] max-h-[42vw] lg:min-h-[15vw] lg:max-h-[15vw]"
                   />
                 </div>
