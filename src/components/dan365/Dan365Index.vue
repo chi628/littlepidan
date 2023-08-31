@@ -182,7 +182,7 @@ const prePage = () => {
               </div>
               <div
                 v-if="showFakeLeftPage"
-                class="absolute top-0 left-0 w-full h-full bg-white origin-right transition-transform duration-300 z-[3] shadow-md p-[5%] space-y-1"
+                class="absolute top-0 left-0 w-full h-full bg-white origin-right transition-transform duration-300 z-[10] shadow-md p-[5%] space-y-1"
               >
                 <div class="w-full h-[5%]"></div>
                 <div
@@ -196,7 +196,7 @@ const prePage = () => {
 
                 <div class="w-full h-[5%]"></div>
               </div>
-              <div class="w-full h-full p-[5%] relative space-y-1">
+              <div class="w-full h-full p-[5%] relative space-y-1 z-[3]">
                 <p
                   class="text-[#c15262] text-xs inline-flex justify-around items-center w-full h-[5%]"
                 >
@@ -223,7 +223,7 @@ const prePage = () => {
             >
               <div
                 ref="rightPage"
-                class="absolute top-0 right-0 w-full h-full bg-transparent origin-left transition-transform duration-300 border border-solid z-[2] p-[5%]"
+                class="absolute top-0 right-0 w-full h-full bg-transparent origin-left transition-transform duration-300 border border-solid z-[3] p-[5%]"
               >
                 <div class="w-full h-[5%]"></div>
                 <div
@@ -245,7 +245,7 @@ const prePage = () => {
 
                 <div class="w-full h-[5%]"></div>
               </div>
-              <div class="w-full h-full p-[5%] space-y-1">
+              <div class="w-full h-full p-[5%] space-y-1 relative z-[3]">
                 <div class="w-full h-[5%]"></div>
                 <div
                   class="w-full h-[90%] grid grid-cols-2 gap-2 justify-items-center"
