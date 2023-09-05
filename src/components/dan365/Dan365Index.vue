@@ -4,7 +4,7 @@ const Image365 = import.meta.glob("@/assets/365/*.{jpg,jpeg}", {
 })
 </script>
 <script lang="ts" setup>
-import { computed, onMounted, ref } from "vue"
+import { computed, onBeforeMount, onMounted, ref } from "vue"
 import Desktop365 from "./Desktop365.vue"
 import Mobile365 from "./Mobile365.vue"
 import PolaroidImg from "./polaroidImg.vue"
@@ -80,7 +80,8 @@ const componentProps = computed(() => {
   }
 })
 
-onMounted(async () => {
+onBeforeMount(async () => {
+  showNextSkeleton.value = true
   const list: string[] = []
 
   for (const url in Image365) {
@@ -89,6 +90,7 @@ onMounted(async () => {
   }
 
   staticImgList.value = list
+  showNextSkeleton.value = false
 })
 
 const fetchImgList = async () => {

@@ -42,3 +42,7 @@ export const imageModal = (url: string) => {
     url,
   })
 }
+
+export const celebrateModal = () => {
+  openModal(() => import("@/components/modal/birthday.vue"))
+}
