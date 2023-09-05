@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import dayjs from 'dayjs'
-import { ref, onMounted, onBeforeUnmount } from 'vue'
-import TimeItem from './TimeItem.vue'
+import dayjs from "dayjs"
+import { ref, onMounted, onBeforeUnmount } from "vue"
+import TimeItem from "./TimeItem.vue"
+import { isBirthDay } from "@/utils/time"
 
 const currentYear = dayjs().year()
 const targetTime = dayjs(`${currentYear}0906`).unix() * 1000
@@ -22,6 +23,25 @@ onMounted(() => {
       countDown()
     }
   }, 1000)
+  if (isBirthDay) {
+    clearInterval(timerIntervel)
+    objArr.value[3] = {
+      target: "sec",
+      value: revertToString(0),
+    }
+    objArr.value[2] = {
+      target: "min",
+      value: revertToString(0),
+    }
+    objArr.value[1] = {
+      target: "hour",
+      value: revertToString(0),
+    }
+    objArr.value[0] = {
+      target: "day",
+      value: revertToString(0),
+    }
+  }
 })
 
 onBeforeUnmount(() => {
@@ -38,19 +58,19 @@ const countDown = () => {
   const day = Math.floor(remain / 1000 / 60 / 60 / 24)
 
   objArr.value[3] = {
-    target: 'sec',
+    target: "sec",
     value: revertToString(sec),
   }
   objArr.value[2] = {
-    target: 'min',
+    target: "min",
     value: revertToString(min),
   }
   objArr.value[1] = {
-    target: 'hour',
+    target: "hour",
     value: revertToString(hour),
   }
   objArr.value[0] = {
-    target: 'day',
+    target: "day",
     value: revertToString(day),
   }
 }
@@ -71,6 +91,6 @@ const revertToString = (val: number) => {
 </template>
 <style lang="scss">
 .format > :not(:last-child) > :nth-child(2)::after {
-  content: ':';
+  content: ":";
 }
 </style>
