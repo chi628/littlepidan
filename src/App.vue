@@ -64,23 +64,15 @@ const toTop = () => {
     <div class="absolute top-10 left-[30%]">
       <Vue3Lottie :animationData="fireworks" :height="150" :width="150" />
     </div>
-
     <div class="absolute -bottom-10 left-[30%]">
       <Vue3Lottie :animationData="fireworks" :height="100" :width="100" />
     </div>
-
-    <div class="absolute top-[40%] left-1/2">
+    <div class="absolute top-[70%] left-[75%] lg:top-[40%] lg:left-1/2">
       <Vue3Lottie :animationData="fireworks" :height="180" :width="180" />
     </div>
-
     <div class="absolute top-20 -right-10">
       <Vue3Lottie :animationData="fireworks" :height="250" :width="250" />
     </div>
-    <!-- <Vue3Lottie :animationData="fireworks" :height="512" :width="512" />
-    <Vue3Lottie :animationData="fireworks" :height="512" :width="512" />
-    <Vue3Lottie :animationData="fireworks" :height="512" :width="512" />
-    <Vue3Lottie :animationData="fireworks" :height="512" :width="512" />
-    <Vue3Lottie :animationData="fireworks" :height="512" :width="512" /> -->
   </div>
   <BirthdayIndex />
   <Dan365Index />
